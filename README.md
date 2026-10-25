@@ -38,7 +38,7 @@ Open `http://localhost:3333` and sign in to Sanity. Use `localhost`, which is th
 - **Case-study sections:** text, images, galleries, and architecture/facts; drag sections to reorder them. The Content preview tab shows draft content inside the authenticated editor.
 - **Lab:** engineering explorations linked to a project.
 
-**This version generates the website at build time.** Saving drafts does not publish them. Publishing, unpublishing, or deleting portfolio content in Sanity automatically triggers a Vercel rebuild of `main` at [the protected portfolio address](https://bryan-murasira-portfolio.vercel.app/). The existing website remains available during the build; its HTML, project routes, sitemap, and Markdown update together when the deployment finishes. The original Sites preview is a separate saved snapshot.
+**This version generates the website at build time.** Saving drafts does not publish them. Publishing, unpublishing, or deleting portfolio content in Sanity automatically triggers a Vercel rebuild of `main` at [Bryan's portfolio](https://www.bryanmurasira.com/). The existing website remains available during the build; its HTML, project routes, sitemap, and Markdown update together when the deployment finishes. The original Sites preview is a separate saved snapshot.
 
 The initial profile, four selected projects, covers, and two Lab entries have been imported. To restore missing initial documents without replacing existing edits:
 
@@ -96,4 +96,4 @@ See [Architecture](docs/architecture.md), [Design guide](docs/design-guide.md), 
 
 Vercel build, access, metadata, and publishing settings are maintained in [Deployment](docs/deployment.md).
 
-Public search indexing requires a publicly accessible deployment and the final canonical domain. Bryan authorised hosting the Studio and an owner-only Sites preview on 2026-10-25. Public launch remains a separate decision. The preview's private access prevents public search indexing until that launch.
+Bryan authorised public production access on 2026-10-25. The canonical domain is `https://www.bryanmurasira.com`; the apex redirects there. Production domains are public and previews retain Vercel Standard Protection. Generated HTML, sitemap, robots, JSON-LD, and agent-readable exports use the production canonical origin. Public accessibility permits crawling; it does not confirm inclusion in a search index. The separate Sites snapshot remains owner-only.

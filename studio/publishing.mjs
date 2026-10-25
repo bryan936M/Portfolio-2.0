@@ -76,7 +76,7 @@ try {
       ...(existing ? {} : { type: "document" }),
       name: hookName,
       description:
-        "Rebuild the protected main website after published portfolio changes.",
+        "Rebuild the main website after published portfolio changes.",
       url: secretUrl,
       dataset: "production",
       rule: {

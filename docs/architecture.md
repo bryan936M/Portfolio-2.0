@@ -63,13 +63,13 @@ The current deployment model is build-time publication:
 1. Edit and reorder content in authenticated Studio.
 2. Review draft content in the Studio's Content preview view.
 3. Publish the document in Sanity.
-4. Sanity calls the Vercel Deploy Hook for `main`. When that protected build succeeds, `https://bryan-murasira-portfolio.vercel.app/` updates all HTML, routes, JSON, and Markdown from the same published data.
+4. Sanity calls the Vercel Deploy Hook for `main`. When that build succeeds, `https://www.bryanmurasira.com/` updates all HTML, routes, JSON, and Markdown from the same published data.
 
 The Studio content preview is an editorial preview, not a full interactive preview of the public site's motion or navigation. The Sanity document webhook is limited to the three portfolio document types and excludes drafts and versions. A real published update and restoration produced successful webhook deliveries and completed Vercel builds. `studio/publishing.mjs` provides scoped configuration, status, and integration verification; hook URLs remain outside source control.
 
-The reserved Sites project is configured for the `out` directory. Preserve its owner-only audience until Bryan authorises sharing/launch changes. Set the actual public origin in `NEXT_PUBLIC_SITE_URL` before public deployment or search submission. Do not use a private deployment as evidence of public indexability.
+The reserved Sites project is configured for the `out` directory. Preserve its owner-only audience separately from the public Vercel site. Production sets `NEXT_PUBLIC_SITE_URL=https://www.bryanmurasira.com` so metadata and discovery exports use the custom domain. Public reachability permits crawling; it does not establish that a search engine has indexed the site.
 
-Vercel uses the Next.js preset, the package build command, and Node.js 22.x. Its generated branch/deployment domain supplies metadata when no explicit canonical origin is configured. See `deployment.md` for the provider configuration and CMS publishing setup. A Vercel preview must be protected while public launch remains undecided.
+Vercel uses the Next.js preset, the package build command, and Node.js 22.x. Its generated branch/deployment domain supplies metadata when no explicit canonical origin is configured. See `deployment.md` for the provider configuration and CMS publishing setup. Vercel Standard Protection keeps preview deployments and generated deployment URLs protected while production domains are public.
 
 ## Reference mapping
 

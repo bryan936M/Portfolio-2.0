@@ -1,10 +1,12 @@
 # Vercel deployment
 
-Status: deployed in `bryan936ms-projects/bryan-murasira-portfolio`, project `prj_wGVGY5bTKpkwiHBSty9niAtv1SiT`. GitHub and automatic CMS rebuilds are connected. Vercel Authentication protects all deployment URLs.
+Status: deployed in `bryan936ms-projects/bryan-murasira-portfolio`, project `prj_wGVGY5bTKpkwiHBSty9niAtv1SiT`. GitHub and automatic CMS rebuilds are connected. Production domains are public; Vercel Standard Protection secures previews and generated deployment URLs.
 
-Main URL: https://bryan-murasira-portfolio.vercel.app/
+Canonical URL: https://www.bryanmurasira.com/
 
-The Git production branch and Sanity Deploy Hook target `main`. Review changes can still use `codex/vercel-deployment` and its generated branch URL. The initial setup sent updates only to that review URL, leaving the main address on the first deployment; the main branch now contains the current application. Authentication remains enabled for every URL. Public launch is still undecided.
+The apex `bryanmurasira.com` redirects to `www.bryanmurasira.com`. The default production alias remains https://bryan-murasira-portfolio.vercel.app/.
+
+The Git production branch and Sanity Deploy Hook target `main`. Review changes can still use `codex/vercel-deployment` and its protected branch URL. Bryan authorised public production access on 2026-10-25.
 
 ## Build contract
 
@@ -18,7 +20,7 @@ The Git production branch and Sanity Deploy Hook target `main`. Review changes c
 
 The published Sanity source is project `i5u4ixfm`, dataset `production`. It needs no read token. Set the matching public configuration in the Vercel project if overriding application defaults.
 
-`NEXT_PUBLIC_SITE_URL` is an optional explicit canonical origin, primarily for a custom domain. Without it, Vercel previews use `VERCEL_BRANCH_URL` (or `VERCEL_URL`), and production uses `VERCEL_PROJECT_PRODUCTION_URL` (or `VERCEL_URL`). These hosts are supplied by Vercel; do not carry the Sites preview origin or a local `.env.local` file into the Vercel deployment.
+Production sets `NEXT_PUBLIC_SITE_URL=https://www.bryanmurasira.com`. Without an explicit canonical origin, Vercel previews use `VERCEL_BRANCH_URL` (or `VERCEL_URL`), and production uses `VERCEL_PROJECT_PRODUCTION_URL` (or `VERCEL_URL`). These hosts are supplied by Vercel; do not carry the Sites preview origin or a local `.env.local` file into the Vercel deployment.
 
 The package build command creates a fresh Sanity request tag for each build so restored Next fetch caches cannot retain an older content snapshot.
 
@@ -26,7 +28,7 @@ The package build command creates a fresh Sanity request tag for each build so r
 
 ## Access and launch
 
-Vercel Authentication is configured with `ssoProtection.deploymentType: all`. An unauthenticated request to the main or review URL redirects to Vercel sign-in. Authenticated CLI requests can verify the site without making it public. Preserve the separate owner-only Sites preview. A public launch/custom domain remains a separate choice.
+Vercel Authentication is configured with `ssoProtection.deploymentType: prod_deployment_urls_and_all_previews` (Standard Protection). Anonymous requests to `www.bryanmurasira.com` and the default production alias return the website; the apex redirects to `www`. Review/preview and generated deployment URLs require Vercel sign-in. Preserve the separate owner-only Sites snapshot and Sanity's authenticated editor.
 
 WebGL textures are generated as same-origin PNG assets during the package build. They work on local ports, branch aliases, and generated deployment URLs without adding browser origins to Sanity. The original exact-origin allowlist remains in place, but is no longer required for texture loading. Studio keeps its own authenticated origin; public CMS reads and texture preparation happen on the build/server side.
 
