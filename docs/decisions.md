@@ -85,3 +85,7 @@ Bryan explicitly selected “Publish both” for hosting the Sanity dashboard an
 ## 2026-10-25 — Vercel setup authorised
 
 Bryan requested moving the website onto Vercel and accepted the proposed setup. Prepare the existing GitHub repository for deployment, configure the website and Sanity connection, and begin with an authenticated review deployment. Use the `codex/vercel-deployment` branch for the initial review and its CMS rebuild hook. No custom domain or public launch was selected.
+
+## 2026-10-25 — Vercel publishing verified
+
+The website is deployed in Bryan's personal Vercel team with authentication on every URL. GitHub is connected, and published changes to the three portfolio document types automatically rebuild the review branch. Real Sanity webhook deliveries and the resulting Vercel builds succeeded. Drafts and release versions are excluded. The exact review origin is allowed to read image textures without credentials; no wildcard origin was added. See `deployment.md` for the project and publishing contract.

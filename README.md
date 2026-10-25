@@ -38,7 +38,7 @@ Open `http://localhost:3333` and sign in to Sanity. Use `localhost`, which is th
 - **Case-study sections:** text, images, galleries, and architecture/facts; drag sections to reorder them. The Content preview tab shows draft content inside the authenticated editor.
 - **Lab:** engineering explorations linked to a project.
 
-**This version generates the website at build time.** Saving drafts does not publish them. After publishing in Studio, rebuild and redeploy the website to update its HTML, project routes, sitemap, and Markdown together. A deployment-provider build hook can automate that step once production hosting is selected. No automatic publishing webhook is configured.
+**This version generates the website at build time.** Saving drafts does not publish them. Publishing, unpublishing, or deleting portfolio content in Sanity automatically triggers a Vercel rebuild of the protected review branch. The existing website remains available during the build; its HTML, project routes, sitemap, and Markdown update together when the deployment finishes. The original Sites preview is a separate saved snapshot.
 
 The initial profile, four selected projects, covers, and two Lab entries have been imported. To restore missing initial documents without replacing existing edits:
 
@@ -53,12 +53,12 @@ The seed command is restricted to the selected project/dataset and uses `createI
 
 Copy `.env.example` to `.env.local` when overriding defaults. Public configuration values are not secrets.
 
-| Variable | Purpose |
-| --- | --- |
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Defaults to `i5u4ixfm` |
-| `NEXT_PUBLIC_SANITY_DATASET` | Defaults to `production` |
-| `NEXT_PUBLIC_SITE_URL` | Canonical production origin, used for metadata, sitemap, JSON-LD, and agent links; set before public deployment |
-| `PORTFOLIO_REQUIRE_CMS` | Production builds require a successful CMS read by default; setting `false` explicitly permits checked-in content during an outage |
+| Variable                        | Purpose                                                                                                                            |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Defaults to `i5u4ixfm`                                                                                                             |
+| `NEXT_PUBLIC_SANITY_DATASET`    | Defaults to `production`                                                                                                           |
+| `NEXT_PUBLIC_SITE_URL`          | Optional explicit canonical origin; Vercel otherwise supplies its generated branch/production domain                               |
+| `PORTFOLIO_REQUIRE_CMS`         | Production builds require a successful CMS read by default; setting `false` explicitly permits checked-in content during an outage |
 
 When the selected dataset contains no portfolio documents yet, the checked-in initial content is used. Once portfolio documents exist, deliberate removals are respected. Only published content is read by the public website.
 

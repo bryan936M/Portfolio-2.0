@@ -53,9 +53,9 @@ The current deployment model is build-time publication:
 1. Edit and reorder content in authenticated Studio.
 2. Review draft content in the Studio's Content preview view.
 3. Publish the document in Sanity.
-4. Rebuild and redeploy the website. All HTML, routes, JSON, and Markdown update from the same published data.
+4. Sanity calls the Vercel Deploy Hook for `codex/vercel-deployment`. When that protected review build succeeds, all HTML, routes, JSON, and Markdown update from the same published data.
 
-The Studio content preview is an editorial preview, not a full interactive preview of the public site's motion or navigation. No automatic CMS webhook/build hook is configured. Configure the chosen hosting provider's build hook before promising automatic website updates on publishing.
+The Studio content preview is an editorial preview, not a full interactive preview of the public site's motion or navigation. The Sanity document webhook is limited to the three portfolio document types and excludes drafts and versions. A real published update and restoration produced successful webhook deliveries and completed Vercel builds. `studio/publishing.mjs` provides scoped configuration, status, and integration verification; hook URLs remain outside source control.
 
 The reserved Sites project is configured for the `out` directory. Preserve its owner-only audience until Bryan authorises sharing/launch changes. Set the actual public origin in `NEXT_PUBLIC_SITE_URL` before public deployment or search submission. Do not use a private deployment as evidence of public indexability.
 
@@ -63,13 +63,13 @@ Vercel uses the Next.js preset, the package build command, and Node.js 22.x. Its
 
 ## Reference mapping
 
-| Source piece | Implementation |
-| --- | --- |
-| Dennis D1 — integrated portrait, name, role and navigation | `features/home/Home.tsx`, `components/layout/Header.tsx`, hero styles |
-| Dennis D2 — asymmetric introduction before work | homepage introduction with profile content and About action |
-| Dennis D3 — spacious work rows and associated image preview | `features/work/ProjectList.tsx` |
-| Unseen U1/U2 — typographic contrast and meaningful depth | editorial headings and the selected-project spatial stage |
-| KPR K1 — continuity of content surfaces through motion | project covers change depth/framing with scroll; no separate motion-preview control |
+| Source piece                                                | Implementation                                                                      |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Dennis D1 — integrated portrait, name, role and navigation  | `features/home/Home.tsx`, `components/layout/Header.tsx`, hero styles               |
+| Dennis D2 — asymmetric introduction before work             | homepage introduction with profile content and About action                         |
+| Dennis D3 — spacious work rows and associated image preview | `features/work/ProjectList.tsx`                                                     |
+| Unseen U1/U2 — typographic contrast and meaningful depth    | editorial headings and the selected-project spatial stage                           |
+| KPR K1 — continuity of content surfaces through motion      | project covers change depth/framing with scroll; no separate motion-preview control |
 
 These are adaptations around Bryan's actual content. The first rejected visual studies are not the implementation baseline.
 
