@@ -71,7 +71,7 @@ The motion follows content and the selected reference pieces:
 
 1. **Opening:** Bryan's name moves horizontally by a small amount as the hero leaves the viewport. It remains live text.
 2. **Section entrances:** content rises 36px and fades in over 0.85 seconds with `power3.out`, once as it enters the viewport.
-3. **Selected work:** actual project covers are textured planes in a Three.js scene. Scroll progress changes their rotation, separation, and depth. The chapter heading and supporting text remain normal HTML.
+3. **Selected work:** actual project covers are textured planes in a Three.js scene. Scroll progress changes their rotation, separation, and depth. Published covers become same-origin PNG textures during media preparation. The chapter heading and supporting text remain normal HTML; static covers remain visible until a real scene frame renders.
 4. **Project interaction:** the associated image appears over a hovered project row; an 84px circular View cursor names the action. Keyboard and touch users can use the same project links directly.
 5. **Controls:** links, navigation dots, and the circular About action use short CSS transitions. Do not add loading sequences that delay reading.
 

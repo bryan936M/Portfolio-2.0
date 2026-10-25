@@ -1,6 +1,9 @@
 import { randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { prepareTextures } from "./prepare-textures.mjs";
+
+await prepareTextures();
 
 // A build-scoped Sanity request tag avoids stale restored fetch-cache entries.
 // It is public diagnostics metadata, not a credential or content identifier.

@@ -20,6 +20,7 @@ studio/.sanity/
 .sites-runtime/
 .sites-checkout/
 .vercel/
+public/images/textures/
 
 # Editor directories and files
 .vscode/*

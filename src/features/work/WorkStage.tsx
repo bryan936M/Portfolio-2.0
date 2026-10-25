@@ -6,6 +6,7 @@ import {
   type ReactNode,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -15,12 +16,15 @@ import type { Project } from "@/content/types";
 
 const WorkScene = dynamic(() => import("@/three/WorkScene"), { ssr: false });
 class SceneBoundary extends Component<
-  { children: ReactNode },
+  { children: ReactNode; onError: () => void },
   { failed: boolean }
 > {
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
+  }
+  componentDidCatch() {
+    this.props.onError();
   }
   render() {
     return this.state.failed ? null : this.props.children;
@@ -28,10 +32,20 @@ class SceneBoundary extends Component<
 }
 export function WorkStage({ projects }: { projects: Project[] }) {
   const ref = useRef<HTMLElement>(null);
+  const images = useMemo(
+    () =>
+      projects
+        .slice(0, 2)
+        .map((project) => project.texture)
+        .filter((url): url is string => Boolean(url)),
+    [projects],
+  );
+  const imageKey = images.join("|");
   const [visible, setVisible] = useState(false),
-    [ready, setReady] = useState(false),
+    [readyFor, setReadyFor] = useState<string | null>(null),
     [progress, setProgress] = useState(0);
-  const onReady = useCallback(() => setReady(true), []);
+  const onReady = useCallback(() => setReadyFor(imageKey), [imageKey]);
+  const onUnavailable = useCallback(() => setReadyFor(null), []);
   useEffect(() => {
     if (
       !ref.current ||
@@ -39,7 +53,10 @@ export function WorkStage({ projects }: { projects: Project[] }) {
     )
       return;
     const observer = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+        if (!entry.isIntersecting) setReadyFor(null);
+      },
       { rootMargin: "150px" },
     );
     observer.observe(ref.current);
@@ -50,6 +67,7 @@ export function WorkStage({ projects }: { projects: Project[] }) {
       end: "bottom top",
       onUpdate: (self) => setProgress(self.progress),
     });
+    setProgress(trigger.progress);
     return () => {
       observer.disconnect();
       trigger.kill();
@@ -60,7 +78,8 @@ export function WorkStage({ projects }: { projects: Project[] }) {
       ref={ref}
       className="work-stage"
       aria-labelledby="selected-work-title"
-      data-ready={visible && ready}
+      data-ready={visible && images.length > 1 && readyFor === imageKey}
+      data-texture-count={images.length}
     >
       <div className="work-stage-heading">
         <p className="eyebrow">Selected projects</p>
@@ -79,13 +98,14 @@ export function WorkStage({ projects }: { projects: Project[] }) {
           />
         ))}
       </div>
-      {visible && projects.length > 1 && (
+      {visible && images.length > 1 && (
         <div className="work-stage-canvas">
-          <SceneBoundary>
+          <SceneBoundary key={imageKey} onError={onUnavailable}>
             <WorkScene
-              images={projects.slice(0, 2).map((project) => project.cover)}
+              images={images}
               progress={progress}
               onReady={onReady}
+              onUnavailable={onUnavailable}
             />
           </SceneBoundary>
         </div>

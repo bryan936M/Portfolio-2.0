@@ -22,6 +22,7 @@ export interface Project {
   kind: "ai" | "web" | "mobile";
   summary: string;
   cover: string;
+  texture?: string;
   color: string;
   stack: string[];
   featured: boolean;

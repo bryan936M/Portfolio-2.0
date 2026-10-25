@@ -45,6 +45,23 @@ for (const route of [
   }
 }
 const home = await read("index.html");
+const texturePaths = [
+  ...new Set(home.match(/\/images\/textures\/[a-z0-9-]+\.png/g) || []),
+];
+for (const path of texturePaths) {
+  const png = await readFile(new URL(`../out${path}`, import.meta.url));
+  assert.equal(
+    png.subarray(0, 8).toString("hex"),
+    "89504e470d0a1a0a",
+    "Every 3D texture must be a real same-origin PNG included in the static export",
+  );
+}
+assert.ok(
+  home.includes(
+    `data-texture-count="${Math.min(2, profile.projects.filter((project) => project.featured).length)}"`,
+  ),
+  "Every selected-work surface needs a prepared same-origin texture",
+);
 assert.equal(profile.name, "Bryan Murasira");
 for (const project of profile.projects) {
   if (project.featured)

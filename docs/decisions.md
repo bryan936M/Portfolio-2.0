@@ -89,3 +89,7 @@ Bryan requested moving the website onto Vercel and accepted the proposed setup. 
 ## 2026-10-25 — Vercel publishing verified
 
 The website is deployed in Bryan's personal Vercel team with authentication on every URL. GitHub is connected, and published changes to the three portfolio document types automatically rebuild the review branch. Real Sanity webhook deliveries and the resulting Vercel builds succeeded. Drafts and release versions are excluded. The exact review origin is allowed to read image textures without credentials; no wildcard origin was added. See `deployment.md` for the project and publishing contract.
+
+## 2026-10-25 — Origin-independent 3D textures
+
+Bryan reported a failed Sanity SVG texture and the resulting flat fallback. The direct CDN request returned HTTP 403 for a development origin outside the exact allowlist. Replace browser CDN texture requests with server-prepared same-origin PNG assets, keeping the selected composition and scroll movement. Prepare assets at build/dev startup and when fresh CMS covers are encountered. Handle client image failures without throwing a runtime error; keep the static covers visible until the real scene renders, and reset readiness across viewport exits.

@@ -62,7 +62,7 @@ Copy `.env.example` to `.env.local` when overriding defaults. Public configurati
 
 When the selected dataset contains no portfolio documents yet, the checked-in initial content is used. Once portfolio documents exist, deliberate removals are respected. Only published content is read by the public website.
 
-WebGL image textures also need the website origin in Sanity's CORS list. The local preview uses `http://127.0.0.1:3010`; add a final hosting origin without credentials when deploying. Studio uses its separate authenticated `http://localhost:3333` origin.
+WebGL image textures are generated as same-origin PNGs from the published covers. `npm run dev` prepares them automatically before startup, and `npm run build` includes the same preparation. Server content reads handle newly encountered covers. No browser-origin changes in Sanity are needed for local ports or Vercel URLs. Studio uses its separate authenticated `http://localhost:3333` origin.
 
 ## Checks
 

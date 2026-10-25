@@ -26,7 +26,7 @@ The package build command creates a fresh Sanity request tag for each build so r
 
 Vercel Authentication is configured with `ssoProtection.deploymentType: all`. An unauthenticated request to the review URL redirects to Vercel sign-in. Authenticated CLI requests can verify the site without making it public. Preserve the separate owner-only Sites preview. A public launch/custom domain remains a separate choice.
 
-The exact review URL is permitted as a read-only origin in Sanity's CORS configuration for WebGL textures. No wildcard preview-origin rule was added. When introducing another website origin, add that exact origin without credentials. Studio keeps its own authenticated origin; the portfolio does not need credentialed browser access to Sanity.
+WebGL textures are generated as same-origin PNG assets during the package build. They work on local ports, branch aliases, and generated deployment URLs without adding browser origins to Sanity. The original exact-origin allowlist remains in place, but is no longer required for texture loading. Studio keeps its own authenticated origin; public CMS reads and texture preparation happen on the build/server side.
 
 ## Publishing content
 

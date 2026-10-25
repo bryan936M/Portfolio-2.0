@@ -11,5 +11,6 @@ studio/.sanity/
 .fallow/
 .bolt/
 .openai/
+public/images/textures/
 *.tsbuildinfo
 *.log

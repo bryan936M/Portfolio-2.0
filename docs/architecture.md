@@ -7,6 +7,7 @@ Updated: 2026-10-25
 - Next.js App Router, React, TypeScript, and static generation. Every content page ships meaningful HTML.
 - Sanity project `i5u4ixfm`, public dataset `production`, read using the published perspective. A separate Studio workspace provides authenticated editing.
 - Three.js through React Three Fiber for project-cover depth; loaded near the viewport. On-demand rendering updates with scroll. Reduced-motion users receive the same project content with a static presentation.
+- Published covers used by the 3D stage are prepared as PNGs in `public/images/textures/`. Build and dev startup prepare them before Next.js scans public assets; server content reads also prepare newly encountered covers. The browser loads same-origin textures, independent of its URL or Sanity's browser-origin list. Generated files are cached by immutable asset ID and excluded from Git.
 - GSAP for section entrances and the name/scroll choreography. Simple interface transitions remain CSS-owned.
 - Self-hosted Geist and Newsreader fonts and semantic CSS tokens. The reference composition, not a UI kit, defines the public interface.
 
@@ -41,6 +42,8 @@ Small route-specific About, Contact, and Lab compositions currently live in thei
 Document types are namespaced: `portfolioProfile`, `portfolioProject`, and `portfolioExperiment`. This avoids colliding with unrelated content types in the same Sanity project.
 
 Projects have stable slugs, title/summary/category, technologies, cover, featured status, ordering, and an ordered array of sections. The four section types are text, image, gallery, and facts/architecture. Rich text is rendered using Portable Text, without executing author-supplied HTML. Public links are restricted to local paths or HTTP(S) URLs.
+
+`cover` remains the editorial image URL. A server-derived `texture` path supplies the 3D stage; it is not an editable CMS field. Only image assets from the configured Sanity project/dataset are mirrored. Preparation bounds input size and output dimensions, writes atomically, and fails production publication if a required image cannot be prepared. The scene handles client loading errors without throwing through Suspense, disposes owned textures, and hides its static fallback only after a mesh renders. Leaving the viewport resets readiness before remounting.
 
 The checked-in content supplies the initial portfolio before seeding. After CMS content exists, removing all projects does not resurrect seed projects. Production builds fail on CMS read errors unless the operator explicitly opts into fallback; development can use the checked-in content.
 

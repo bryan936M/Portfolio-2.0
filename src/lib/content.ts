@@ -2,6 +2,7 @@ import { cache } from "react";
 import { createClient } from "@sanity/client";
 import seed from "@/content/portfolio.json";
 import type { Portfolio, Profile, Project, Experiment } from "@/content/types";
+import { prepareTexture } from "@/lib/texture-assets.server.mjs";
 
 export const sanityProjectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "i5u4ixfm";
@@ -87,7 +88,7 @@ export const getPortfolio = cache(async (): Promise<Portfolio> => {
   profile.github = safeUrl(profile.github, seed.profile.github);
   profile.linkedin = safeUrl(profile.linkedin, seed.profile.linkedin);
   const hasCmsContent = Boolean(remote?.profile || remote?.projects?.length);
-  const projects = (
+  const projects: Project[] = (
     hasCmsContent ? remote!.projects : (seed.projects as Project[])
   )
     .filter(
@@ -103,6 +104,25 @@ export const getPortfolio = cache(async (): Promise<Portfolio> => {
       sections: project.sections || [],
       stack: project.stack || [],
     }));
+  await Promise.all(
+    projects
+      .filter((project) => project.featured)
+      .slice(0, 2)
+      .map(async (project) => {
+        try {
+          project.texture = await prepareTexture(
+            project.cover,
+            sanityProjectId,
+            sanityDataset,
+          );
+        } catch (error) {
+          if (process.env.NODE_ENV === "production") throw error;
+          console.warn(
+            "A project texture could not be prepared; retaining its static cover.",
+          );
+        }
+      }),
+  );
   return {
     profile,
     projects,
