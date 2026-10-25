@@ -8,5 +8,8 @@ studio/.sanity/
 .env*
 .sites-runtime/
 .sites-checkout/
+.fallow/
+.bolt/
+.openai/
 *.tsbuildinfo
 *.log
