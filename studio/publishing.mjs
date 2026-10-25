@@ -73,7 +73,7 @@ try {
     )
       throw new Error("Use this portfolio's Vercel deploy hook.");
     const body = {
-      type: "document",
+      ...(existing ? {} : { type: "document" }),
       name: hookName,
       description:
         "Rebuild the protected main website after published portfolio changes.",
