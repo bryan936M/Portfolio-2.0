@@ -81,3 +81,7 @@ Source: [Sanity IDs and paths](https://www.sanity.io/docs/content-lake/ids).
 ## 2026-10-25 — Hosting authorised
 
 Bryan explicitly selected “Publish both” for hosting the Sanity dashboard and an owner-only private website preview. Public launch remains a separate decision. The Studio was deployed at `https://bryan-portfolio-i5u4ixfm.sanity.studio/`; editing requires Sanity project access. Preserve the website's owner-only audience.
+
+## 2026-10-25 — Vercel setup authorised
+
+Bryan requested moving the website onto Vercel and accepted the proposed setup. Prepare the existing GitHub repository for deployment, configure the website and Sanity connection, and begin with an authenticated review deployment. Use the `codex/vercel-deployment` branch for the initial review and its CMS rebuild hook. No custom domain or public launch was selected.

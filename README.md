@@ -84,4 +84,6 @@ Bryan selected Umucyo Catalog AI, Talent OP, Vodun Days, and Emart. Initial desc
 
 See [Architecture](docs/architecture.md), [Design guide](docs/design-guide.md), [Reference pieces](docs/inspiration.md), and [Decisions](docs/decisions.md).
 
+Vercel build, access, metadata, and publishing settings are maintained in [Deployment](docs/deployment.md).
+
 Public search indexing requires a publicly accessible deployment and the final canonical domain. Bryan authorised hosting the Studio and an owner-only Sites preview on 2026-10-25. Public launch remains a separate decision. The preview's private access prevents public search indexing until that launch.

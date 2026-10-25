@@ -59,6 +59,8 @@ The Studio content preview is an editorial preview, not a full interactive previ
 
 The reserved Sites project is configured for the `out` directory. Preserve its owner-only audience until Bryan authorises sharing/launch changes. Set the actual public origin in `NEXT_PUBLIC_SITE_URL` before public deployment or search submission. Do not use a private deployment as evidence of public indexability.
 
+Vercel uses the Next.js preset, the package build command, and Node.js 22.x. Its generated branch/deployment domain supplies metadata when no explicit canonical origin is configured. See `deployment.md` for the provider configuration and CMS publishing setup. A Vercel preview must be protected while public launch remains undecided.
+
 ## Reference mapping
 
 | Source piece | Implementation |

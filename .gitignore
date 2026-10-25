@@ -19,6 +19,7 @@ out/
 studio/.sanity/
 .sites-runtime/
 .sites-checkout/
+.vercel/
 
 # Editor directories and files
 .vscode/*

@@ -7,8 +7,13 @@ export const sanityProjectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "i5u4ixfm";
 export const sanityDataset =
   process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const vercelHost =
+  process.env.VERCEL_ENV === "preview"
+    ? process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL
+    : process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
 export const siteOrigin = (
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (vercelHost ? `https://${vercelHost}` : "http://localhost:3000")
 ).replace(/\/$/, "");
 
 const client = createClient({
