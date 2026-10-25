@@ -1,0 +1,174 @@
+{
+  "profile": {
+    "name": "Bryan Murasira",
+    "roles": ["Full-stack software engineer", "Generative AI engineer"],
+    "location": "Kigali, Rwanda",
+    "email": "bryanmurasira@gmail.com",
+    "github": "https://github.com/bryan936M",
+    "linkedin": "https://www.linkedin.com/in/bryan-murasira-1b3a28246/",
+    "portrait": "/images/bryan-github.jpg",
+    "introduction": "I’m Bryan, a full-stack software engineer and generative AI engineer based in Kigali, Rwanda.",
+    "about": "My work brings together web applications, backend systems, and generative AI. This portfolio collects projects across catalog intelligence, recruitment, cultural events, and commerce."
+  },
+  "projects": [
+    {
+      "slug": "umucyo-catalog-ai",
+      "title": "Umucyo Catalog AI",
+      "category": "AI engineering · Full-stack",
+      "kind": "ai",
+      "summary": "AI-assisted catalog classification, schema generation, and item registration—with human review built into the workflow.",
+      "cover": "/images/umucyo-cover.svg",
+      "color": "#dce3cf",
+      "stack": [
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "PostgreSQL",
+        "RabbitMQ",
+        "Qdrant"
+      ],
+      "featured": true,
+      "sections": [
+        {
+          "_key": "umucyo-context",
+          "_type": "textSection",
+          "heading": "Catalog intelligence, with a human in the loop.",
+          "text": "Umucyo Catalog AI supports the preparation and review of procurement catalog records. Its workflows cover commodity fields, item cleanup, reclassification, duplicate search, and the registration of new items."
+        },
+        {
+          "_key": "umucyo-workflow",
+          "_type": "textSection",
+          "heading": "From a description to a reviewed record.",
+          "text": "A new-item workflow takes a description through clarifications, commodity selection, attribute review, and wording. A contracting authority reviews the submission before it becomes a published catalog item. AI suggestions remain part of a reviewable process."
+        },
+        {
+          "_key": "umucyo-architecture",
+          "_type": "factsSection",
+          "heading": "The system",
+          "items": [
+            { "label": "Interface", "value": "React and TypeScript" },
+            {
+              "label": "API and workflow state",
+              "value": "FastAPI and PostgreSQL"
+            },
+            {
+              "label": "Async execution",
+              "value": "Transactional outbox, RabbitMQ, and workers"
+            },
+            { "label": "Retrieval", "value": "Qdrant and pgvector embeddings" }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "talent-op",
+      "title": "Talent OP",
+      "category": "Full-stack · Recruitment",
+      "kind": "web",
+      "summary": "A recruitment platform connecting job discovery, applications, and employer workflows.",
+      "cover": "/images/talent-op-cover.svg",
+      "color": "#dce0eb",
+      "stack": ["React", "Node.js", "TypeScript"],
+      "website": "https://talent-op.com/",
+      "featured": true,
+      "sections": [
+        {
+          "_key": "talent-context",
+          "_type": "textSection",
+          "heading": "Two sides of the hiring process.",
+          "text": "Talent OP brings candidate and employer journeys into a recruitment platform. Candidates can discover jobs and apply, while employer dashboards support job publishing and hiring workflows."
+        },
+        {
+          "_key": "talent-application",
+          "_type": "textSection",
+          "heading": "An application beyond the landing page.",
+          "text": "The interface connects public job listings with authenticated candidate and employer areas. The project includes application flows, dashboard pages, and messaging interfaces."
+        }
+      ]
+    },
+    {
+      "slug": "vodun-days",
+      "title": "Vodun Days",
+      "category": "Mobile · Backend",
+      "kind": "mobile",
+      "summary": "A festival application for exploring activities, venues, the agenda, and event updates.",
+      "cover": "/images/vodun-cover.svg",
+      "color": "#e9d7c5",
+      "stack": ["React Native", "Expo", "TypeScript", "Node.js", "PostgreSQL"],
+      "featured": true,
+      "sections": [
+        {
+          "_key": "vodun-context",
+          "_type": "textSection",
+          "heading": "The festival, in your pocket.",
+          "text": "Vodun Days celebrates Vodun arts, culture, and spirituality in Ouidah, Benin. The application brings together an agenda, activity details, venues, and news for festival visitors."
+        },
+        {
+          "_key": "vodun-platform",
+          "_type": "factsSection",
+          "heading": "Across the platform",
+          "items": [
+            { "label": "Mobile", "value": "React Native with Expo" },
+            {
+              "label": "Content",
+              "value": "Activities, venues, and event news"
+            },
+            {
+              "label": "Backend",
+              "value": "Node.js, TypeScript, and PostgreSQL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "emart",
+      "title": "Emart",
+      "category": "Full-stack · Commerce",
+      "kind": "web",
+      "summary": "Commerce software bringing together products, orders, inventory, customers, and user permissions.",
+      "cover": "/images/emart-cover.svg",
+      "color": "#d9ded9",
+      "stack": ["React", "TypeScript", "Node.js", "PostgreSQL", "Prisma"],
+      "featured": true,
+      "sections": [
+        {
+          "_key": "emart-context",
+          "_type": "textSection",
+          "heading": "The operations behind commerce.",
+          "text": "Emart connects product, order, stock, customer, and user management. A typed REST API supports the commerce application and its administrative workflows."
+        },
+        {
+          "_key": "emart-system",
+          "_type": "factsSection",
+          "heading": "Application foundations",
+          "items": [
+            { "label": "Frontend", "value": "React and TypeScript" },
+            { "label": "Backend", "value": "Node.js and Express" },
+            { "label": "Data", "value": "PostgreSQL with Prisma" },
+            {
+              "label": "Access",
+              "value": "User roles, permissions, and email verification"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "experiments": [
+    {
+      "slug": "schema-generation",
+      "title": "Schema generation",
+      "category": "Generative AI",
+      "summary": "Model-driven commodity fields and structured catalog attributes, brought into a human review workflow.",
+      "project": "umucyo-catalog-ai"
+    },
+    {
+      "slug": "catalog-retrieval",
+      "title": "Catalog retrieval",
+      "category": "Retrieval",
+      "summary": "Embeddings and vector search for item classification, published-item search, and duplicate discovery.",
+      "project": "umucyo-catalog-ai"
+    }
+  ]
+}
