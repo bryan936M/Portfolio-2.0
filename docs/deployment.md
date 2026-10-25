@@ -2,9 +2,9 @@
 
 Status: deployed in `bryan936ms-projects/bryan-murasira-portfolio`, project `prj_wGVGY5bTKpkwiHBSty9niAtv1SiT`. GitHub and automatic CMS rebuilds are connected. Vercel Authentication protects all deployment URLs.
 
-Review URL: https://bryan-murasira-portfolio-git-codex-v-1004bc-bryan936ms-projects.vercel.app/
+Main URL: https://bryan-murasira-portfolio.vercel.app/
 
-The Git production branch remains `main`. The review branch and Sanity Deploy Hook target `codex/vercel-deployment`. Vercel classified its first project deployment as production; authentication was enabled for all URLs before that build. Subsequent content-triggered deployments are previews. Public launch is still undecided.
+The Git production branch and Sanity Deploy Hook target `main`. Review changes can still use `codex/vercel-deployment` and its generated branch URL. The initial setup sent updates only to that review URL, leaving the main address on the first deployment; the main branch now contains the current application. Authentication remains enabled for every URL. Public launch is still undecided.
 
 ## Build contract
 
@@ -24,13 +24,13 @@ The package build command creates a fresh Sanity request tag for each build so r
 
 ## Access and launch
 
-Vercel Authentication is configured with `ssoProtection.deploymentType: all`. An unauthenticated request to the review URL redirects to Vercel sign-in. Authenticated CLI requests can verify the site without making it public. Preserve the separate owner-only Sites preview. A public launch/custom domain remains a separate choice.
+Vercel Authentication is configured with `ssoProtection.deploymentType: all`. An unauthenticated request to the main or review URL redirects to Vercel sign-in. Authenticated CLI requests can verify the site without making it public. Preserve the separate owner-only Sites preview. A public launch/custom domain remains a separate choice.
 
 WebGL textures are generated as same-origin PNG assets during the package build. They work on local ports, branch aliases, and generated deployment URLs without adding browser origins to Sanity. The original exact-origin allowlist remains in place, but is no longer required for texture loading. Studio keeps its own authenticated origin; public CMS reads and texture preparation happen on the build/server side.
 
 ## Publishing content
 
-The website is generated from published content at build time. The configured automation is a Sanity document webhook calling a Vercel Deploy Hook for the review Git branch:
+The website is generated from published content at build time. The configured automation is a Sanity document webhook calling a Vercel Deploy Hook for the `main` Git branch:
 
 1. Create one Deploy Hook for that branch after the Git connection exists.
 2. Store its URL only in the Sanity webhook configuration. Treat it as a secret; do not commit or print it.
@@ -39,7 +39,7 @@ The website is generated from published content at build time. The configured au
 5. Use a minimal webhook projection containing document ID and operation. Do not send the complete content document to the deploy hook.
 6. Verify an actual webhook attempt and resulting successful Vercel build before claiming automatic publication works.
 
-The Sanity webhook is named **Bryan portfolio — Vercel review**. Both test event deliveries returned HTTP 201, and the resulting Vercel deployments completed successfully. The test changed only a hex colour's letter casing, preserving its rendered appearance, then immediately restored the original stored value with revision checks.
+The Sanity webhook is named **Bryan portfolio — Vercel main**. The publishing helper also recognises its previous review name so reconfiguration updates the existing webhook. Integration checks change only a hex colour's letter casing, preserving its rendered appearance, then immediately restore the original stored value with revision checks.
 
 The hosted Sanity Studio remains at https://bryan-portfolio-i5u4ixfm.sanity.studio/.
 

@@ -56,7 +56,7 @@ The current deployment model is build-time publication:
 1. Edit and reorder content in authenticated Studio.
 2. Review draft content in the Studio's Content preview view.
 3. Publish the document in Sanity.
-4. Sanity calls the Vercel Deploy Hook for `codex/vercel-deployment`. When that protected review build succeeds, all HTML, routes, JSON, and Markdown update from the same published data.
+4. Sanity calls the Vercel Deploy Hook for `main`. When that protected build succeeds, `https://bryan-murasira-portfolio.vercel.app/` updates all HTML, routes, JSON, and Markdown from the same published data.
 
 The Studio content preview is an editorial preview, not a full interactive preview of the public site's motion or navigation. The Sanity document webhook is limited to the three portfolio document types and excludes drafts and versions. A real published update and restoration produced successful webhook deliveries and completed Vercel builds. `studio/publishing.mjs` provides scoped configuration, status, and integration verification; hook URLs remain outside source control.
 

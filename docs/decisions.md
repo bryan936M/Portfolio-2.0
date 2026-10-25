@@ -97,3 +97,7 @@ Bryan reported a failed Sanity SVG texture and the resulting flat fallback. The 
 ## 2026-10-25 — Supplied portrait
 
 Bryan supplied `Professional_Portrait_2000x2500.jpg` and explicitly requested using it. Replace the provisional GitHub photo in Sanity and the fallback content. Preserve the supplied pixels, use the full 4:5 image on About, and adjust the opening crop for desktop and mobile. Store the photo in Sanity and reference its hosted URL; exclude the original binary from the public Git repository and source uploads.
+
+## 2026-10-25 — Main Vercel address
+
+Bryan reported that the supplied portrait was missing from `bryan-murasira-portfolio.vercel.app`. That address still pointed to the first deployment while subsequent work and CMS rebuilds updated only the review branch. Bring `main` forward to the current application and retarget the existing Sanity publishing integration to it. Keep Vercel Authentication on every deployment; this changes the maintained destination, not the public-launch decision.

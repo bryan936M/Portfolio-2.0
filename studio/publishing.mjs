@@ -1,7 +1,8 @@
 import { getCliClient } from "sanity/cli";
 
 const projectId = "i5u4ixfm";
-const hookName = "Bryan portfolio — Vercel review";
+const hookName = "Bryan portfolio — Vercel main";
+const previousHookName = "Bryan portfolio — Vercel review";
 const client = getCliClient({ apiVersion: "2025-08-04" });
 if (
   client.config().projectId !== projectId ||
@@ -53,7 +54,9 @@ async function readHiddenInput() {
 try {
   const response = await management.request({ url: path });
   const hooks = Array.isArray(response) ? response : response.hooks;
-  const existing = hooks.find((hook) => hook.name === hookName);
+  const existing =
+    hooks.find((hook) => hook.name === hookName) ||
+    hooks.find((hook) => hook.name === previousHookName);
   if (mode === "configure") {
     const input = await readHiddenInput();
     secretUrl = input.deployHookUrl;
@@ -73,7 +76,7 @@ try {
       type: "document",
       name: hookName,
       description:
-        "Rebuild the protected codex/vercel-deployment review after published portfolio changes.",
+        "Rebuild the protected main website after published portfolio changes.",
       url: secretUrl,
       dataset: "production",
       rule: {

@@ -7,5 +7,5 @@
 - Public content must be present in generated HTML and available through normal links. Keep textual content independent of canvas and animation.
 - Maintain keyboard, touch, reduced-motion, and static fallbacks. Remove event listeners, ScrollTriggers, and GPU resources with their owning component lifecycle.
 - Never place a Sanity write token in client code or source control. Public website reads use the published perspective.
-- Update architecture and decision records when a boundary or publishing workflow changes. The current website is generated at build time; publishing in Sanity alone does not redeploy it.
+- Update architecture and decision records when a boundary or publishing workflow changes. The website is generated at build time; published Sanity changes trigger a rebuild of the protected Vercel main deployment.
 - Run appropriate checks from the README. The output verifier follows a successful production build. Do not add generic filler or mirror tests for cosmetic changes.

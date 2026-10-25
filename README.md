@@ -38,7 +38,7 @@ Open `http://localhost:3333` and sign in to Sanity. Use `localhost`, which is th
 - **Case-study sections:** text, images, galleries, and architecture/facts; drag sections to reorder them. The Content preview tab shows draft content inside the authenticated editor.
 - **Lab:** engineering explorations linked to a project.
 
-**This version generates the website at build time.** Saving drafts does not publish them. Publishing, unpublishing, or deleting portfolio content in Sanity automatically triggers a Vercel rebuild of the protected review branch. The existing website remains available during the build; its HTML, project routes, sitemap, and Markdown update together when the deployment finishes. The original Sites preview is a separate saved snapshot.
+**This version generates the website at build time.** Saving drafts does not publish them. Publishing, unpublishing, or deleting portfolio content in Sanity automatically triggers a Vercel rebuild of `main` at [the protected portfolio address](https://bryan-murasira-portfolio.vercel.app/). The existing website remains available during the build; its HTML, project routes, sitemap, and Markdown update together when the deployment finishes. The original Sites preview is a separate saved snapshot.
 
 The initial profile, four selected projects, covers, and two Lab entries have been imported. To restore missing initial documents without replacing existing edits:
 
