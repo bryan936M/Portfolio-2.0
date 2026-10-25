@@ -49,6 +49,14 @@ npm exec --workspace @bryan/studio -- sanity exec ./seed.mjs --with-user-token
 
 The seed command is restricted to the selected project/dataset and uses `createIfNotExists`. Authentication stays in Sanity's local CLI session; no write token is placed in the website or repository.
 
+## Contact form
+
+The Contact page uses Formspree to deliver name, email, and message submissions to Bryan's inbox. It retains the direct email and social links. Set `NEXT_PUBLIC_FORMSPREE_FORM_ID` to the public ID from the real form endpoint (`https://formspree.io/f/ID`) in Vercel's preview and production environments, then rebuild. Confirm the recipient inbox in Formspree before enabling delivery. The browser contains no account/API secret. Without an ID, the existing direct-email inquiry paths remain available.
+
+The form provides accessible field errors, a pending state that prevents duplicate submissions, and an acceptance confirmation. Failed requests preserve the entered message. A hidden `_gotcha` field complements Formspree's spam filtering. Formspree handles inbox routing, filtering, and any configured CAPTCHA; verify those settings and actual delivery before claiming the form is connected. Visitor inquiries are never stored in the public Sanity dataset or browser storage.
+
+Formspree's [free plan](https://formspree.io/plans) currently allows 50 submissions per month and a 30-day archive (checked 2026-10-25). Review usage there; a rejected or over-limit submission must show an error and the direct email fallback.
+
 ## Configuration
 
 Copy `.env.example` to `.env.local` when overriding defaults. Public configuration values are not secrets.
@@ -58,6 +66,7 @@ Copy `.env.example` to `.env.local` when overriding defaults. Public configurati
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | Defaults to `i5u4ixfm`                                                                                                             |
 | `NEXT_PUBLIC_SANITY_DATASET`    | Defaults to `production`                                                                                                           |
 | `NEXT_PUBLIC_SITE_URL`          | Optional explicit canonical origin; Vercel otherwise supplies its generated branch/production domain                               |
+| `NEXT_PUBLIC_FORMSPREE_FORM_ID` | Public form ID for contact delivery; no account/API key is needed by the website                                                    |
 | `PORTFOLIO_REQUIRE_CMS`         | Production builds require a successful CMS read by default; setting `false` explicitly permits checked-in content during an outage |
 
 When the selected dataset contains no portfolio documents yet, the checked-in initial content is used. Once portfolio documents exist, deliberate removals are respected. Only published content is read by the public website.
@@ -68,6 +77,7 @@ WebGL image textures are generated as same-origin PNGs from the published covers
 
 ```sh
 npm run typecheck
+npm run test:contact
 npm run build
 npm run verify
 npm run studio:build

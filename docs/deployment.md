@@ -22,6 +22,8 @@ The published Sanity source is project `i5u4ixfm`, dataset `production`. It need
 
 The package build command creates a fresh Sanity request tag for each build so restored Next fetch caches cannot retain an older content snapshot.
 
+`NEXT_PUBLIC_FORMSPREE_FORM_ID` is the public contact-form ID, configured for preview and production. It is not an account or API secret. The Contact page posts to that Formspree form, which owns inbox routing and spam filtering. Verify the recipient and any CAPTCHA/domain settings in Formspree; changing this variable requires a new website build. Sanity profile email edits change the direct email link, while the form recipient is managed separately in Formspree.
+
 ## Access and launch
 
 Vercel Authentication is configured with `ssoProtection.deploymentType: all`. An unauthenticated request to the main or review URL redirects to Vercel sign-in. Authenticated CLI requests can verify the site without making it public. Preserve the separate owner-only Sites preview. A public launch/custom domain remains a separate choice.

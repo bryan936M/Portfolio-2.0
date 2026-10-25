@@ -61,9 +61,9 @@ Desktop headings use fluid scales: the hero name spans approximately the page wi
 | Project | Back link → title/summary/technologies → cover → ordered case-study sections → next project → contact footer                                   |
 | Lab     | Heading/introduction → engineering explorations linked to their source project → contact footer                                                |
 | About   | Heading → portrait and biography → engineering disciplines → contact footer                                                                    |
-| Contact | Heading → email/location → project and role conversation paths → social links                                                                  |
+| Contact | Heading → direct email/location/social links beside a three-field contact form → contact footer                                                 |
 
-There is no fake contact submission form. Contact actions open Bryan's email address, with a subject identifying a project inquiry or engineering role.
+The Contact form adapts the numbered, ruled field sequence from [Dennis's Contact page](https://dennissnellenberg.com/contact) into three fields: name, email, and message. Use the existing paper surface, generous field spacing, visible labels, and a circular Send message action. Keep direct email, location, and social links in the adjacent column. On phones the form follows those details in one column. Focus and errors must remain visible; sending and accepted/error states must be announced, and failed submissions must preserve the entered message. Do not display a working submission action until real delivery is configured.
 
 ## Motion and 3D contract
 

@@ -25,6 +25,7 @@ src/
   features/
     home/                    homepage composition
     work/                    project list, filters, case-study sections, spatial stage
+    contact/                 accessible contact form, validation, and submission lifecycle
   three/                     WebGL scene and resource ownership
   content/                   typed contracts and checked-in initial content
   lib/                       published CMS reads, URL validation, metadata
@@ -35,7 +36,13 @@ scripts/                     output verification and local static preview
 docs/                        design, references, decisions, and this architecture
 ```
 
-Small route-specific About, Contact, and Lab compositions currently live in their route files; extract feature modules when actual complexity or reuse warrants them. Routes compose features; scene implementation remains outside content and layout primitives.
+Small route-specific About and Lab compositions currently live in their route files; extract feature modules when actual complexity or reuse warrants them. Contact composes its interactive form from `features/contact`. Routes compose features; scene implementation remains outside content and layout primitives.
+
+## Contact delivery
+
+The site retains static generation. A configured Contact form submits directly to Formspree through its official React submission client; the public form ID is supplied at build time through `NEXT_PUBLIC_FORMSPREE_FORM_ID`. Formspree owns recipient verification, private submissions, spam filtering, and notification delivery. No write token, visitor inquiry, or delivery API secret goes into Sanity or source control. The form also supports a native HTML POST when JavaScript is unavailable.
+
+Validate required fields and lengths, announce errors and accepted submissions, focus the first invalid field, and preserve values on provider/network failures. Prevent concurrent submissions. Only an accepted provider response may show success. Keep direct email and social links available independently. Until a real form ID is configured, render the existing direct-email inquiry paths.
 
 ## Content contract
 

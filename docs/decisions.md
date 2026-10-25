@@ -101,3 +101,9 @@ Bryan supplied `Professional_Portrait_2000x2500.jpg` and explicitly requested us
 ## 2026-10-25 — Main Vercel address
 
 Bryan reported that the supplied portrait was missing from `bryan-murasira-portfolio.vercel.app`. That address still pointed to the first deployment while subsequent work and CMS rebuilds updated only the review branch. Bring `main` forward to the current application and retarget the existing Sanity publishing integration to it. Keep Vercel Authentication on every deployment; this changes the maintained destination, not the public-launch decision.
+
+## 2026-10-25 — Contact form
+
+Bryan authorised adding a compact name, email, and message form after discussing inbox delivery, spam protection, accessible validation, and explicit sending/success/error feedback. Keep direct email visible. Adapt Dennis's numbered Contact fields within the existing editorial layout. Bryan supplied the real Formspree endpoint for inbox delivery; configure its public form ID through Vercel environment variables. Visitor messages must not be written to the public Sanity dataset.
+
+The configured endpoint accepted one labelled setup inquiry and the browser displayed its success state. Desktop/phone layout, required/invalid fields, focus recovery, message preservation during a blocked network request, and reset focus were checked. This verifies provider acceptance; mailbox receipt was not independently inspected.
