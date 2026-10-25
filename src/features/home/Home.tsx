@@ -14,8 +14,8 @@ export function Home({ portfolio }: { portfolio: Portfolio }) {
           <img
             src={profile.portrait}
             alt="Bryan Murasira"
-            width="920"
-            height="920"
+            width="2000"
+            height="2500"
             fetchPriority="high"
           />
         </div>

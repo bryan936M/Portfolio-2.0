@@ -55,15 +55,28 @@ const profile = {
   portraitUrl: data.profile.portrait,
 };
 delete profile.portrait;
-const portraitAsset = await client.assets.upload(
-  "image",
-  createReadStream(
+let portraitSource;
+if (
+  data.profile.portrait.startsWith(
+    "https://cdn.sanity.io/images/i5u4ixfm/production/",
+  )
+) {
+  const response = await fetch(data.profile.portrait, { redirect: "error" });
+  if (!response.ok)
+    throw new Error(
+      "The stored portrait is unavailable; upload a new portrait in Studio before seeding.",
+    );
+  portraitSource = Buffer.from(await response.arrayBuffer());
+} else {
+  portraitSource = createReadStream(
     fileURLToPath(
-      new URL("../public/images/bryan-github.jpg", import.meta.url),
+      new URL(`../public${data.profile.portrait}`, import.meta.url),
     ),
-  ),
-  { filename: "bryan-murasira.jpg" },
-);
+  );
+}
+const portraitAsset = await client.assets.upload("image", portraitSource, {
+  filename: "bryan-murasira.jpg",
+});
 profile.portrait = {
   _type: "image",
   asset: { _type: "reference", _ref: portraitAsset._id },

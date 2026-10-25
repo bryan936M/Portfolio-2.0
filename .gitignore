@@ -21,6 +21,7 @@ studio/.sanity/
 .sites-checkout/
 .vercel/
 public/images/textures/
+public/images/bryan-portrait.jpg
 
 # Editor directories and files
 .vscode/*

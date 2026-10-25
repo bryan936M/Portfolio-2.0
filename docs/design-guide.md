@@ -10,7 +10,7 @@ Address employers and clients equally. Establish Bryan's name, real portrait, fu
 
 Every phrase must identify Bryan, explain work, organise content, or name a useful action. Do not use invented metrics, experience, results, testimonials, or application screenshots. The rejected labels “Preview spatial motion”, “Bryan / PORTRAIT STUDY”, and “A little room to think” must not appear in the public interface.
 
-The initial photo is Bryan's public GitHub portrait. The project covers are typographic identities, not application screenshots. Both are replaceable in Sanity.
+The current photo is the 2000 × 2500 portrait supplied by Bryan. Use a top-aligned crop in the opening and a 4:5 frame on About. Keep the face clear of the role text and name on both desktop and mobile. The project covers are typographic identities, not application screenshots. Both are replaceable in Sanity.
 
 ## Reference pieces
 

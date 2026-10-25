@@ -12,5 +12,6 @@ studio/.sanity/
 .bolt/
 .openai/
 public/images/textures/
+public/images/bryan-portrait.jpg
 *.tsbuildinfo
 *.log

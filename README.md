@@ -78,7 +78,7 @@ The output verifier follows the current published project list and checks HTML r
 
 ## Content provenance
 
-Bryan selected Umucyo Catalog AI, Talent OP, Vodun Days, and Emart. Initial descriptions and technologies are based on their repository documentation, not invented delivery claims or metrics. Project covers are typographic identity covers, not screenshots of the applications; replace them with approved media in Studio. The initial portrait is from Bryan's public GitHub profile and can also be replaced in Studio.
+Bryan selected Umucyo Catalog AI, Talent OP, Vodun Days, and Emart. Initial descriptions and technologies are based on their repository documentation, not invented delivery claims or metrics. Project covers are typographic identity covers, not screenshots of the applications; replace them with approved media in Studio. The current 2000 × 2500 portrait was supplied by Bryan and replaces the provisional GitHub photo. It remains editable in Studio.
 
 ## Structure and design
 

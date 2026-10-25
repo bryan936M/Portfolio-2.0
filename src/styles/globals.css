@@ -195,10 +195,10 @@ sup {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 69%;
+  width: 62%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 37%;
+  object-position: 50% 0%;
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -267,6 +267,8 @@ sup {
 }
 .hero-scroll {
   position: absolute;
+  color: white;
+  mix-blend-mode: difference;
   right: var(--gutter);
   bottom: 50px;
   font-size: 12px;
@@ -709,8 +711,10 @@ sup {
 }
 .about-portrait img {
   width: 100%;
-  aspect-ratio: 1;
+  height: auto;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: 50% 0%;
   filter: saturate(0.75);
 }
 .about-copy h2 {
@@ -1097,15 +1101,15 @@ body:has(.contact-page) .site-footer {
   }
   .hero-media img {
     width: 123%;
-    height: 77%;
+    max-width: none;
+    height: 68%;
     right: -23%;
     bottom: 50px;
-    object-position: 50% 43%;
+    object-position: 50% 0%;
     mask-image: linear-gradient(
       to bottom,
       transparent,
-      transparent 12%,
-      #000 30%,
+      #000 10%,
       #000 77%,
       transparent
     );

@@ -93,3 +93,7 @@ The website is deployed in Bryan's personal Vercel team with authentication on e
 ## 2026-10-25 — Origin-independent 3D textures
 
 Bryan reported a failed Sanity SVG texture and the resulting flat fallback. The direct CDN request returned HTTP 403 for a development origin outside the exact allowlist. Replace browser CDN texture requests with server-prepared same-origin PNG assets, keeping the selected composition and scroll movement. Prepare assets at build/dev startup and when fresh CMS covers are encountered. Handle client image failures without throwing a runtime error; keep the static covers visible until the real scene renders, and reset readiness across viewport exits.
+
+## 2026-10-25 — Supplied portrait
+
+Bryan supplied `Professional_Portrait_2000x2500.jpg` and explicitly requested using it. Replace the provisional GitHub photo in Sanity and the fallback content. Preserve the supplied pixels, use the full 4:5 image on About, and adjust the opening crop for desktop and mobile. Store the photo in Sanity and reference its hosted URL; exclude the original binary from the public Git repository and source uploads.

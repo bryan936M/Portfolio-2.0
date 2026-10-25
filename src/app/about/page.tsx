@@ -24,8 +24,8 @@ export default async function AboutPage() {
           <img
             src={profile.portrait}
             alt="Bryan Murasira"
-            width="920"
-            height="920"
+            width="2000"
+            height="2500"
           />
         </div>
         <div className="about-copy" data-reveal>
