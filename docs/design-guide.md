@@ -1,6 +1,6 @@
 # Portfolio design guide — v1
 
-Updated: 2026-10-25 (Africa/Kigali)
+Updated: 2026-10-27 (Africa/Kigali)
 
 Status: first implemented direction, ready for Bryan's visual review. The reference choices, page structure, real portrait, light base, and implementation are authorised. Exact typography, colour, spacing, and motion below describe this implementation; they are not recorded as individually approved design choices.
 
@@ -11,6 +11,8 @@ Address employers and clients equally. Establish Bryan's name, real portrait, fu
 Every phrase must identify Bryan, explain work, organise content, or name a useful action. Do not use invented metrics, experience, results, testimonials, or application screenshots. The rejected labels “Preview spatial motion”, “Bryan / PORTRAIT STUDY”, and “A little room to think” must not appear in the public interface.
 
 The current photo is the 2000 × 2500 portrait supplied by Bryan. Use a top-aligned crop in the opening and a 4:5 frame on About. Keep the face clear of the role text and name on both desktop and mobile. The project covers are typographic identities, not application screenshots. Both are replaceable in Sanity.
+
+The approved BM mark follows Bryan's supplied reference: two rounded B shapes beside an angular M, separated by a curved cut. Use the static `BrandMark` SVG in the shared header, 38px wide on desktop and 34px on phones, beside the existing full name. It inherits the surrounding text colour and keeps its original proportions. Preserve a minimum 44px home-link target. The favicon and touch icon reverse the same mark in paper on an ink square with modest internal space; do not add the reference's caption or shadow. The vector master is `public/brand/bm-monogram.svg`; keep its paths in sync with `BrandMark` when editing the artwork.
 
 ## Reference pieces
 

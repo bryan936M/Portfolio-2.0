@@ -16,6 +16,18 @@ export const metadata: Metadata = {
   description:
     "Selected work by Bryan Murasira, a full-stack software engineer and generative AI engineer based in Kigali, Rwanda.",
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: {
+      url: "/apple-touch-icon.png",
+      type: "image/png",
+      sizes: "180x180",
+    },
+  },
   alternates: { types: { "text/plain": `${siteOrigin}/llms.txt` } },
 };
 

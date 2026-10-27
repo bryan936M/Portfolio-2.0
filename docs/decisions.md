@@ -111,3 +111,9 @@ The configured endpoint accepted one labelled setup inquiry and the browser disp
 ## 2026-10-25 — Public production access
 
 After reporting the Vercel login prompt, Bryan explicitly approved making `www.bryanmurasira.com` and the main Vercel address public while retaining preview authentication. Set Vercel Standard Protection (`prod_deployment_urls_and_all_previews`). The verified apex domain redirects to `www`; production metadata, sitemap, JSON-LD, and agent exports use `https://www.bryanmurasira.com` through the production canonical environment variable. This supersedes the private-production requirement for Vercel. The original Sites snapshot and authenticated Sanity editor retain their existing access.
+
+## 2026-10-27 — BM identity
+
+Bryan supplied a BM reference and requested its reconstruction, then explicitly asked to put the resulting mark on the app. Use the two rounded B shapes and angular M separated by the curved cut. Replace the provisional `bm.` header text, retaining Bryan's full name and the accessible home-link label. Use the same artwork in the paper-on-ink favicon and touch icon. The reference's decorative shadow and “Creative design” caption are excluded from the portfolio identity.
+
+The shared mark is a static SVG in `components/ui/BrandMark.tsx`, with a downloadable vector master at `public/brand/bm-monogram.svg`. Root metadata registers the SVG, 48px PNG, ICO, and 180px Apple touch icon so every generated page declares the identity.

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { BrandMark } from "@/components/ui/BrandMark";
 
 const links = [
   ["Work", "/work/"],
@@ -32,9 +33,7 @@ export function Header() {
         onClick={() => setOpen(false)}
         aria-label="Bryan Murasira — home"
       >
-        <span className="identity-mark" aria-hidden="true">
-          bm.
-        </span>
+        <BrandMark className="identity-mark" />
         <span className="identity-name">Bryan Murasira</span>
       </Link>
       <button
