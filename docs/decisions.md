@@ -117,3 +117,7 @@ After reporting the Vercel login prompt, Bryan explicitly approved making `www.b
 Bryan supplied a BM reference and requested its reconstruction, then explicitly asked to put the resulting mark on the app. Use the two rounded B shapes and angular M separated by the curved cut. Replace the provisional `bm.` header text, retaining Bryan's full name and the accessible home-link label. Use the same artwork in the paper-on-ink favicon and touch icon. The reference's decorative shadow and “Creative design” caption are excluded from the portfolio identity.
 
 The shared mark is a static SVG in `components/ui/BrandMark.tsx`, with a downloadable vector master at `public/brand/bm-monogram.svg`. Root metadata registers the SVG, 48px PNG, ICO, and 180px Apple touch icon so every generated page declares the identity.
+
+## 2026-11-12 — Homepage portrait cutout
+
+Bryan requested removing the room from the hero portrait so the site's background shows around him. The homepage uses an alpha WebP paired with the current Sanity portrait, while About retains the full photo. A different portrait selected in Sanity uses the original photo treatment until there is a matching cutout.

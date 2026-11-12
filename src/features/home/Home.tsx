@@ -4,18 +4,30 @@ import { Arrow } from "@/components/ui/Arrow";
 import { ProjectList } from "@/features/work/ProjectList";
 import { WorkStage } from "@/features/work/WorkStage";
 
+// The cutout belongs to this specific Sanity portrait asset.
+const portraitWithCutout =
+  "https://cdn.sanity.io/images/i5u4ixfm/production/1321881be0c51d809b84fb2e240643bc320d38ee-2000x2500.jpg";
+
 export function Home({ portfolio }: { portfolio: Portfolio }) {
   const { profile, projects } = portfolio;
   const featuredProjects = projects.filter((project) => project.featured);
+  const hasPortraitCutout = profile.portrait === portraitWithCutout;
+  const heroPortrait = hasPortraitCutout
+    ? "/images/bryan-hero-cutout.webp"
+    : profile.portrait;
   return (
     <>
       <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-media">
+        <div
+          className={
+            hasPortraitCutout ? "hero-media hero-media--cutout" : "hero-media"
+          }
+        >
           <img
-            src={profile.portrait}
+            src={heroPortrait}
             alt="Bryan Murasira"
-            width="2000"
-            height="2500"
+            width={hasPortraitCutout ? 1121 : 2000}
+            height={hasPortraitCutout ? 1403 : 2500}
             fetchPriority="high"
           />
         </div>
