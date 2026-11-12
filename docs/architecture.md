@@ -9,6 +9,7 @@ Updated: 2026-10-25
 - Three.js through React Three Fiber for project-cover depth; loaded near the viewport. On-demand rendering updates with scroll. Reduced-motion users receive the same project content with a static presentation.
 - Published covers used by the 3D stage are prepared as PNGs in `public/images/textures/`. Build and dev startup prepare them before Next.js scans public assets; server content reads also prepare newly encountered covers. The browser loads same-origin textures, independent of its URL or Sanity's browser-origin list. Generated files are cached by immutable asset ID and excluded from Git.
 - GSAP for section entrances and the name/scroll choreography. Simple interface transitions remain CSS-owned.
+- The homepage owns the BM opening. A small inline script measures the header mark and enables the CSS sequence on direct homepage loads and reloads. The decorative layer starts hidden and the hero is part of the generated HTML.
 - Self-hosted Geist and Newsreader fonts and semantic CSS tokens. The reference composition, not a UI kit, defines the public interface.
 
 ## Maintained structure

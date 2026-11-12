@@ -1,0 +1,137 @@
+.home-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  visibility: hidden;
+  pointer-events: none;
+  color: var(--ink);
+}
+
+.home-opening::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+}
+
+.home-opening-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(88px, 11vw, 144px);
+  height: auto;
+  translate: -50% -50%;
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body:has(.home-opening[data-playing]) {
+    --opening-handoff-start: 1180ms;
+    --opening-handoff-duration: 940ms;
+    --opening-sweep: cubic-bezier(.76, 0, .24, 1);
+  }
+
+  .home-opening[data-playing] {
+    animation: home-opening-visibility 2700ms step-end both;
+  }
+
+  .home-opening[data-playing]::before {
+    animation: home-opening-paper 840ms var(--opening-sweep) var(--opening-handoff-start) both;
+  }
+
+  .home-opening[data-playing] .home-opening-mark {
+    animation: home-opening-handoff var(--opening-handoff-duration) var(--opening-sweep) var(--opening-handoff-start) both;
+  }
+
+  .home-opening[data-playing] path {
+    --part-x: -27%;
+    --part-y: -28%;
+    transform-box: view-box;
+    animation: home-opening-assemble 840ms cubic-bezier(.35, .06, .24, 1) both;
+  }
+
+  .home-opening[data-playing] path:nth-child(2) {
+    --part-y: 28%;
+    animation-delay: 64ms;
+  }
+
+  .home-opening[data-playing] path:nth-child(3) {
+    --part-x: 28%;
+    --part-y: 0%;
+    animation-delay: 130ms;
+  }
+
+  body:has(.home-opening[data-playing]) .identity-mark {
+    animation: home-opening-header-mark calc(var(--opening-handoff-start) + var(--opening-handoff-duration)) step-end both;
+  }
+
+  body:has(.home-opening[data-playing]) .site-header :is(.identity-name, .main-navigation, .menu-toggle) {
+    animation: home-opening-header-text 780ms cubic-bezier(.16, 1, .3, 1) calc(var(--opening-handoff-start) + 650ms) both;
+  }
+
+  .home-opening[data-playing] ~ .hero :is(h1, .hero-media, .hero-role, .hero-location, .hero-scroll) {
+    animation: home-opening-reveal var(--reveal-duration) cubic-bezier(.16, 1, .3, 1) calc(var(--opening-handoff-start) + var(--reveal-delay)) both;
+  }
+
+  .home-opening[data-playing] ~ .hero h1 {
+    --reveal-rise: 50%;
+    --reveal-duration: 930ms;
+    --reveal-delay: 120ms;
+  }
+
+  .home-opening[data-playing] ~ .hero .hero-media {
+    --reveal-rise: 5%;
+    --reveal-duration: 990ms;
+    --reveal-delay: 300ms;
+  }
+
+  .home-opening[data-playing] ~ .hero .hero-role {
+    --reveal-rise: 20%;
+    --reveal-duration: 860ms;
+    --reveal-delay: 500ms;
+  }
+
+  .home-opening[data-playing] ~ .hero :is(.hero-location, .hero-scroll) {
+    --reveal-rise: 35%;
+    --reveal-duration: 700ms;
+    --reveal-delay: 810ms;
+  }
+}
+
+@keyframes home-opening-visibility {
+  from { visibility: visible; }
+  to { visibility: hidden; }
+}
+
+@keyframes home-opening-paper {
+  to { opacity: 0; }
+}
+
+@keyframes home-opening-assemble {
+  from { opacity: .78; transform: translate(var(--part-x), var(--part-y)); }
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+@keyframes home-opening-handoff {
+  to {
+    transform: translate(var(--handoff-x), var(--handoff-y)) scale(var(--handoff-scale));
+    visibility: hidden;
+  }
+}
+
+@keyframes home-opening-header-mark {
+  from { opacity: 0; }
+}
+
+@keyframes home-opening-header-text {
+  from { opacity: 0; translate: 0 -7px; }
+}
+
+@keyframes home-opening-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    translate: 0 var(--reveal-rise);
+  }
+  to { opacity: 1; clip-path: inset(0); translate: 0 0; }
+}

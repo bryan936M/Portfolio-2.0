@@ -67,15 +67,17 @@ Desktop headings use fluid scales: the hero name spans approximately the page wi
 
 The Contact form adapts the numbered, ruled field sequence from [Dennis's Contact page](https://dennissnellenberg.com/contact) into three fields: name, email, and message. Use the existing paper surface, generous field spacing, visible labels, and a circular Send message action. Keep direct email, location, and social links in the adjacent column. On phones the form follows those details in one column. Focus and errors must remain visible; sending and accepted/error states must be announced, and failed submissions must preserve the entered message. Do not display a working submission action until real delivery is configured.
 
+The footer gives the contact invitation a wide column, with site navigation and social links alongside it. Use the night surface, a light Contact button, Bryan's direct email, and a ruled bottom row with the BM mark, copyright, and Back to top. The contact invitation sits above the link groups on phones. The Contact page uses the compact footer with navigation and social links beneath the form. [Gelbero Wilson footer](https://gelbero-wilson.webflow.io/)
+
 ## Motion and 3D contract
 
 The motion follows content and the selected reference pieces:
 
-1. **Opening:** Bryan's name moves horizontally by a small amount as the hero leaves the viewport. It remains live text.
+1. **Opening:** On direct homepage loads and reloads, the two B shapes and the M move in from separate positions on a paper background. The assembled mark holds briefly in the center, then moves into the header. The name, portrait, roles, and work link enter in sequence. The whole intro lasts about 2.7 seconds. Scrolling or interacting reveals the hero immediately. Reduced motion and direct links to homepage sections show the hero immediately. Bryan's name remains live text and moves horizontally by a small amount as the hero leaves the viewport.
 2. **Section entrances:** content rises 36px and fades in over 0.85 seconds with `power3.out`, once as it enters the viewport.
 3. **Selected work:** actual project covers are textured planes in a Three.js scene. Scroll progress changes their rotation, separation, and depth. Published covers become same-origin PNG textures during media preparation. The chapter heading and supporting text remain normal HTML; static covers remain visible until a real scene frame renders.
 4. **Project interaction:** the associated image appears over a hovered project row; an 84px circular View cursor names the action. Keyboard and touch users can use the same project links directly.
-5. **Controls:** links, navigation dots, and the circular About action use short CSS transitions. Do not add loading sequences that delay reading.
+5. **Controls:** links, navigation dots, and the circular About action use short CSS transitions. The homepage intro can run while assets load and finishes independently of them.
 
 Load WebGL near the viewport. Render on demand, cap pixel ratio at 1.5, and remove triggers/listeners and scene resources with their owner. If reduced motion is requested, omit scroll animation and show static project covers. If WebGL fails, preserve the same text, static media, and destinations. Do not hide essential content behind canvas or hydration.
 

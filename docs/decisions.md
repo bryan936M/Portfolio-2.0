@@ -121,3 +121,11 @@ The shared mark is a static SVG in `components/ui/BrandMark.tsx`, with a downloa
 ## 2026-11-12 — Homepage portrait cutout
 
 Bryan requested removing the room from the hero portrait so the site's background shows around him. The homepage uses an alpha WebP paired with the current Sanity portrait, while About retains the full photo. A different portrait selected in Sanity uses the original photo treatment until there is a matching cutout.
+
+## 2026-11-12 — Homepage opening animation
+
+Bryan chose Header handoff from the motion previews. The three BM shapes start visibly separated and meet at the center of the paper cover. The complete mark holds briefly, then moves to the header as Bryan's name, portrait, roles, and work link appear in sequence. Bryan requested half speed, bringing the intro to 2.7 seconds, and asked for it to play on direct homepage loads and every reload. Show the hero immediately for reduced motion, section links, or visitor interaction. The animation runs independently of image and WebGL loading.
+
+## 2026-11-12 — Footer layout
+
+Bryan requested a footer based on Gelbero Wilson's. Use a prominent contact invitation with a Contact button and direct email, adjacent navigation and social groups, and a ruled bottom row with the BM mark and Back to top. The Contact page keeps the navigation and social groups beneath the form. [Gelbero Wilson footer](https://gelbero-wilson.webflow.io/)

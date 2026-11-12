@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Portfolio } from "@/content/types";
 import { Arrow } from "@/components/ui/Arrow";
+import { HomeOpening } from "@/features/home/HomeOpening";
 import { ProjectList } from "@/features/work/ProjectList";
 import { WorkStage } from "@/features/work/WorkStage";
 
@@ -17,6 +18,7 @@ export function Home({ portfolio }: { portfolio: Portfolio }) {
     : profile.portrait;
   return (
     <>
+      <HomeOpening />
       <section className="hero" aria-labelledby="hero-title">
         <div
           className={

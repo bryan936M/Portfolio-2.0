@@ -3,14 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { siteLinks } from "@/components/layout/navigation";
 import { BrandMark } from "@/components/ui/BrandMark";
 
-const links = [
-  ["Work", "/work/"],
-  ["Lab", "/lab/"],
-  ["About", "/about/"],
-  ["Contact", "/contact/"],
-];
 export function Header() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
@@ -52,7 +47,7 @@ export function Header() {
         className={open ? "main-navigation is-open" : "main-navigation"}
         aria-label="Main navigation"
       >
-        {links.map(([label, href]) => (
+        {siteLinks.map(([label, href]) => (
           <Link
             key={href}
             href={href}
