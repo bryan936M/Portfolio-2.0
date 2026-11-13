@@ -129,3 +129,7 @@ Bryan chose Header handoff from the motion previews. The three BM shapes start v
 ## 2026-11-12 — Footer layout
 
 Bryan requested a footer based on Gelbero Wilson's. Use a prominent contact invitation with a Contact button and direct email, adjacent navigation and social groups, and a ruled bottom row with the BM mark and Back to top. The Contact page keeps the navigation and social groups beneath the form. [Gelbero Wilson footer](https://gelbero-wilson.webflow.io/)
+
+## 2026-11-13 — Homepage branch
+
+Bryan asked for a single branch to guide visitors as they scroll, using the existing colour theme. The branch enters from the right of the portrait and grows along the outside edge through the introduction, selected work, and Lab. Use the existing accent, paper, and night tokens for the branch. The [full tree journey](homepage-journey.md) is an archived concept.

@@ -1,6 +1,6 @@
 # Homepage evolution · visitor journey draft
 
-Draft for review · 13 November 2026
+Archived concept · 13 November 2026. See [the homepage branch decision](decisions.md#2026-11-13--homepage-branch) for the current direction.
 
 The homepage is one continuous 3D environment built around a tree at the scale of a place. Scroll moves the camera through that space. Each destination gives the visitor a moment to look, read a short piece of context, or follow a link. Scrolling back retraces the route. The familiar navigation gives visitors a direct way to reach Work, Lab, About, or Contact.
 

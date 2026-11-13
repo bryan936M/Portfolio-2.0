@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HomeBranch } from "@/features/home/HomeBranch";
 import type { Portfolio } from "@/content/types";
 import { Arrow } from "@/components/ui/Arrow";
 import { HomeOpening } from "@/features/home/HomeOpening";
@@ -104,6 +105,7 @@ export function Home({ portfolio }: { portfolio: Portfolio }) {
           </Link>
         </div>
       </section>
+      <HomeBranch />
     </>
   );
 }

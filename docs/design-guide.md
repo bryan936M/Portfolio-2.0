@@ -78,6 +78,7 @@ The motion follows content and the selected reference pieces:
 3. **Selected work:** actual project covers are textured planes in a Three.js scene. Scroll progress changes their rotation, separation, and depth. Published covers become same-origin PNG textures during media preparation. The chapter heading and supporting text remain normal HTML; static covers remain visible until a real scene frame renders.
 4. **Project interaction:** the associated image appears over a hovered project row; an 84px circular View cursor names the action. Keyboard and touch users can use the same project links directly.
 5. **Controls:** links, navigation dots, and the circular About action use short CSS transitions. The homepage intro can run while assets load and finishes independently of them.
+6. **Homepage branch:** A single sage branch grows down the outer right edge at the pace of native scrolling and retracts as visitors scroll back. Keep it in the margin, reduce its scale on phones, and use the still illustration when reduced motion is enabled.
 
 Load WebGL near the viewport. Render on demand, cap pixel ratio at 1.5, and remove triggers/listeners and scene resources with their owner. If reduced motion is requested, omit scroll animation and show static project covers. If WebGL fails, preserve the same text, static media, and destinations. Do not hide essential content behind canvas or hydration.
 
