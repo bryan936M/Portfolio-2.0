@@ -139,3 +139,11 @@ Bryan asked for a single branch to guide visitors as they scroll, using the exis
 Bryan requested saving the version through the branch and then overhauling the homepage around a selected minimalist interactive reference. The branch baseline is commit `c18c089`. Use Monopo London's continuous atmosphere, spare type, and generous spacing as the reference. The implementation uses a sage 3D ribbon that reframes with scroll, Bryan's portrait and name in the opening, and native expandable About, project, and Lab content. A fixed chapter navigation links directly to each destination. The established paper, ink, accent, and night palette supplies the experience. The sculpture and headings are an implementation proposal for visual review.
 
 Reference inspected in the browser on 13 November 2026. [Monopo London](https://monopo.london/)
+
+## 2026-11-13 — Mobile editorial stack
+
+Bryan selected and authorised the editorial-stack refinement: name and roles above the portrait, a smaller ribbon, a single Work CTA, and chapter navigation after the hero. Preserve the palette, desktop composition, real content, and existing scroll journey. Use content-driven hero height and bottom safe-area clearance.
+
+## 2026-11-13 — Name, portrait, and ribbon opening
+
+Bryan clarified that the redesign is mobile only. The phone hero leads with a closer portrait and sage ribbon, followed by the name in sans serif and italic Newsreader. The Monopo-inspired full-screen menu replaces the mobile chapter bar. The desktop hero and navigation retain their original composition.

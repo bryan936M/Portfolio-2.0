@@ -8,12 +8,32 @@ import { BrandMark } from "@/components/ui/BrandMark";
 
 export function Header() {
   const path = usePathname();
-  const [open, setOpen] = useState(false);
+  const [openPath, setOpenPath] = useState<string | null>(null);
+  const open = openPath === path;
   const toggle = useRef<HTMLButtonElement>(null);
+  const navigation = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const mobile = matchMedia("(max-width: 640px)");
+    const panel = navigation.current;
+    const page = document.querySelectorAll<HTMLElement>(".skip-link, #main, .site-footer");
+    const sync = () => {
+      if (panel) panel.inert = mobile.matches && !open;
+      page.forEach(element => { element.inert = mobile.matches && open; });
+    };
+    sync();
+    mobile.addEventListener("change", sync);
+    return () => {
+      mobile.removeEventListener("change", sync);
+      if (panel) panel.inert = false;
+      page.forEach(element => { element.inert = false; });
+    };
+  }, [open]);
+
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape" && open) {
-        setOpen(false);
+        setOpenPath(null);
         toggle.current?.focus();
       }
     };
@@ -25,7 +45,7 @@ export function Header() {
       <SiteLink
         className="identity"
         href="/"
-        onClick={() => setOpen(false)}
+        onClick={() => setOpenPath(null)}
         aria-label="Bryan Murasira — home"
       >
         <BrandMark className="identity-mark" />
@@ -37,24 +57,26 @@ export function Header() {
         className="menu-toggle"
         aria-expanded={open}
         aria-controls="main-navigation"
-        onClick={() => setOpen(!open)}
+        aria-label={open ? "Close menu" : "Open menu"}
+        onClick={() => setOpenPath(open ? null : path)}
       >
-        {open ? "Close" : "Menu"}
-        <span aria-hidden="true">{open ? "−" : "+"}</span>
+        <span className="menu-lines" aria-hidden="true"><span /><span /><span /></span>
       </button>
       <nav
+        ref={navigation}
         id="main-navigation"
         className={open ? "main-navigation is-open" : "main-navigation"}
         aria-label="Main navigation"
       >
-        {siteLinks.map(([label, href]) => (
+        {([["Home", "/"], ...siteLinks] as const).map(([label, href]) => (
           <SiteLink
             key={href}
             href={href}
+            className={href === "/" ? "mobile-home-link" : undefined}
             aria-current={
-              path.startsWith(href.slice(0, -1)) ? "page" : undefined
+              (href === "/" ? path === "/" : path === href.slice(0, -1) || path.startsWith(href)) ? "page" : undefined
             }
-            onClick={() => setOpen(false)}
+            onClick={() => setOpenPath(null)}
           >
             {label}
             <span className="nav-dot" aria-hidden="true" />

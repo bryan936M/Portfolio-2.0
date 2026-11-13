@@ -58,6 +58,7 @@ export default function RibbonScene() {
     let width = 0;
     let height = 0;
     let unavailable = false;
+    let portraitCenter = 0;
     const target = new Vector3();
     const draw = () => {
       frame = 0;
@@ -72,9 +73,12 @@ export default function RibbonScene() {
       renderedProgress += (progress - renderedProgress) * .14;
       const p = renderedProgress;
       sculpture.rotation.set(.4 + p * .37 + mouseY * .035, -.45 + p * .8 + mouseX * .05, -.3 + p * .45);
-      sculpture.position.set(compact ? 1.4 : 2.6, compact ? 1.3 : .1, 0);
+      const phone = width <= 640;
+      const opening = phone ? Math.max(0, 1 - p) : 0;
+      const portraitY = (0.5 - (portraitCenter - scrollY) / height) * 2 * Math.tan(35 * Math.PI / 360) * 15;
+      sculpture.position.set(compact ? 1.4 : 2.6, phone ? portraitY * opening + 1.3 * (1 - opening) : compact ? 1.3 : .1, 0);
       const scale = p < 1 ? 1 + Math.sin(p * Math.PI) * .4 : 1 + Math.sin((p - 1) * Math.PI / 2) * .18;
-      sculpture.scale.setScalar(scale);
+      sculpture.scale.setScalar(scale * (1 - opening * .22));
       camera.position.set(mouseX * .12, mouseY * .08, compact ? 15 : 12 - Math.sin(p * Math.PI) * 1.4);
       target.set(0, 0, 0); camera.lookAt(target);
       renderer.render(scene, camera);
@@ -88,7 +92,10 @@ export default function RibbonScene() {
       progress = index + Math.max(0, Math.min(1, (scrollY - stops[index]) / Math.max(1, stops[index + 1] - stops[index])));
       invalidate();
     };
-    const measure = () => { stops = sections.map(section => section.getBoundingClientRect().top + scrollY); seek(); };
+    const measure = () => {
+      const portrait = main.querySelector(".ribbon-portrait")?.getBoundingClientRect();
+      portraitCenter = portrait ? portrait.top + scrollY + portrait.height * .48 : innerHeight * .7;
+      stops = sections.map(section => section.getBoundingClientRect().top + scrollY); seek(); };
     const resize = new ResizeObserver(measure); resize.observe(main); resize.observe(canvas);
     const cancel = scroll(seek);
     const pointer = (event: PointerEvent) => {

@@ -2,6 +2,7 @@ import { SiteLink } from "@/components/layout/SiteLink";
 import type { Portfolio } from "@/content/types";
 import { Arrow } from "@/components/ui/Arrow";
 import { HomeOpening } from "./HomeOpening";
+import { MobileHeroMarquee } from "./MobileHeroMarquee";
 import { RibbonJourney } from "./RibbonJourney";
 import "@/styles/ribbon-journey.css";
 
@@ -23,7 +24,15 @@ export function Home({ portfolio }: { portfolio: Portfolio }) {
       <div className={`ribbon-portrait ${hasCutout ? "ribbon-portrait-cutout" : ""}`}>
         <img src={hasCutout ? "/images/bryan-hero-cutout.webp" : profile.portrait} alt={profile.name} width={hasCutout ? 1121 : 2000} height={hasCutout ? 1403 : 2500} fetchPriority="high" />
       </div>
-      <h1 id="hero-title">{profile.name}<span>.</span></h1>
+      <h1 id="hero-title">
+        <span className="ribbon-given-name">{profile.name.slice(0, profile.name.lastIndexOf(" ") + 1)}</span>
+        <span className="ribbon-surname">{profile.name.slice(profile.name.lastIndexOf(" ") + 1)}</span>
+        <span className="ribbon-name-period">.</span>
+      </h1>
+      <MobileHeroMarquee name={profile.name} />
+      <a className="ribbon-mobile-scroll" href="#about-bryan" aria-label="Scroll to About Bryan">
+        <Arrow />
+      </a>
       <div className="ribbon-hero-bottom"><a href="#about-bryan">Scroll to discover <span aria-hidden="true">↓</span></a></div>
     </section>
     <section className="ribbon-section ribbon-about" id="about-bryan" data-ribbon-stop tabIndex={-1}>
