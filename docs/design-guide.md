@@ -100,3 +100,9 @@ Use shared Header, Footer, Arrow, motion lifecycle, and project-row components. 
 Review the real content and reference composition before changing a section. Record the chosen piece, content purpose, layout, interaction, and mobile/reduced-motion states before coding a new visual direction. Browser verification establishes whether the result matches that decision; it does not replace making the decision first.
 
 Check portrait legibility, whitespace, type hierarchy, useful copy, named navigation, project filter behaviour, keyboard focus, narrow layouts, WebGL readiness, and readable generated HTML. Update this guide and [the decision log](decisions.md) when the design changes.
+
+## Current homepage — ribbon journey
+
+The opening frames Bryan's real portrait with a sage ribbon sculpture and oversized live name. Scrolling changes the ribbon's orientation, scale, and camera distance continuously alongside About, selected work, and Lab. Use generous paper-coloured negative space and the existing typography. The selected reference is Monopo London's atmospheric presence and sparse composition. [Monopo London](https://monopo.london/)
+
+Short summaries expand using native details/summary controls. Project entries reveal the real cover, summary, technology list, and case-study link. A floating chapter navigation shows the current section. Phone layouts use a single column with a smaller portrait composition and stronger contrast behind text. Reduced-motion and WebGL fallback use a static sculptural silhouette. The current homepage supersedes the branch and project-cover stage composition above.

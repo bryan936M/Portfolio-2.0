@@ -1,111 +1,57 @@
 import Link from "next/link";
-import { HomeBranch } from "@/features/home/HomeBranch";
 import type { Portfolio } from "@/content/types";
 import { Arrow } from "@/components/ui/Arrow";
-import { HomeOpening } from "@/features/home/HomeOpening";
-import { ProjectList } from "@/features/work/ProjectList";
-import { WorkStage } from "@/features/work/WorkStage";
+import { HomeOpening } from "./HomeOpening";
+import { RibbonJourney } from "./RibbonJourney";
+import "@/styles/ribbon-journey.css";
 
-// The cutout belongs to this specific Sanity portrait asset.
-const portraitWithCutout =
-  "https://cdn.sanity.io/images/i5u4ixfm/production/1321881be0c51d809b84fb2e240643bc320d38ee-2000x2500.jpg";
+const cutoutPortrait = "https://cdn.sanity.io/images/i5u4ixfm/production/1321881be0c51d809b84fb2e240643bc320d38ee-2000x2500.jpg";
 
 export function Home({ portfolio }: { portfolio: Portfolio }) {
-  const { profile, projects } = portfolio;
-  const featuredProjects = projects.filter((project) => project.featured);
-  const hasPortraitCutout = profile.portrait === portraitWithCutout;
-  const heroPortrait = hasPortraitCutout
-    ? "/images/bryan-hero-cutout.webp"
-    : profile.portrait;
-  return (
-    <>
-      <HomeOpening />
-      <section className="hero" aria-labelledby="hero-title">
-        <div
-          className={
-            hasPortraitCutout ? "hero-media hero-media--cutout" : "hero-media"
-          }
-        >
-          <img
-            src={heroPortrait}
-            alt="Bryan Murasira"
-            width={hasPortraitCutout ? 1121 : 2000}
-            height={hasPortraitCutout ? 1403 : 2500}
-            fetchPriority="high"
-          />
-        </div>
-        <div className="hero-role">
-          <span className="hero-role-arrow" aria-hidden="true">
-            ↘
-          </span>
-          <p>
-            {profile.roles.map((role, index) =>
-              index === 0 ? (
-                <span className="primary-role" key={role}>
-                  {role}
-                </span>
-              ) : (
-                <em key={role}>{role}</em>
-              ),
-            )}
-          </p>
-        </div>
-        <p className="hero-location">
-          <span className="location-dot" />
-          {profile.location}
-        </p>
-        <h1 id="hero-title" data-hero-name>
-          <span>{profile.name}</span>
-          <span className="hero-name-period">.</span>
-        </h1>
-        <a href="#selected-work" className="hero-scroll">
-          Selected work
-          <Arrow />
-        </a>
-      </section>
-      <section className="home-intro content-width" aria-label="About Bryan">
-        <p className="intro-statement" data-reveal>
-          {profile.introduction}
-        </p>
-        <div className="intro-detail" data-reveal>
-          <p>{profile.about}</p>
-          <Link href="/about/" className="circle-link">
-            About me
-            <Arrow diagonal />
-          </Link>
-        </div>
-      </section>
-      <div id="selected-work">
-        <WorkStage projects={featuredProjects} />
+  const { profile, projects, experiments } = portfolio;
+  const featured = projects.filter(project => project.featured);
+  const hasCutout = profile.portrait === cutoutPortrait;
+  return <>
+    <HomeOpening />
+    <RibbonJourney />
+    <section className="hero ribbon-hero" aria-labelledby="hero-title" data-ribbon-stop>
+      <div className="ribbon-hero-intro">
+        <p className="eyebrow">{profile.location}</p>
+        <p className="ribbon-role">{profile.roles.map((role, index) => index === 0 ? <span key={role}>{role}.<br /></span> : <em key={role}>{role}.</em>)}</p>
+        <a href="#selected-work" className="ribbon-link">Explore my work <Arrow diagonal /></a>
       </div>
-      <section className="home-work content-width" aria-label="Selected work">
-        <ProjectList projects={featuredProjects} />
-        <Link href="/work/" className="outline-link">
-          All work <sup>{projects.length}</sup>
-          <Arrow diagonal />
-        </Link>
-      </section>
-      <section className="home-lab content-width">
-        <div className="section-intro" data-reveal>
-          <p className="eyebrow">Ongoing exploration</p>
-          <h2>
-            Inside
-            <br />
-            the <em>lab.</em>
-          </h2>
-        </div>
-        <div className="lab-introduction" data-reveal>
-          <p>
-            Generative workflows, structured information, and retrieval. A
-            closer look at the engineering within the projects.
-          </p>
-          <Link href="/lab/" className="text-link">
-            Explore the lab
-            <Arrow diagonal />
-          </Link>
-        </div>
-      </section>
-      <HomeBranch />
-    </>
-  );
+      <div className={`ribbon-portrait ${hasCutout ? "ribbon-portrait-cutout" : ""}`}>
+        <img src={hasCutout ? "/images/bryan-hero-cutout.webp" : profile.portrait} alt={profile.name} width={hasCutout ? 1121 : 2000} height={hasCutout ? 1403 : 2500} fetchPriority="high" />
+      </div>
+      <h1 id="hero-title">{profile.name}<span>.</span></h1>
+      <div className="ribbon-hero-bottom"><span>Software &amp; AI</span><a href="#about-bryan">Scroll to discover <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <section className="ribbon-section ribbon-about" id="about-bryan" data-ribbon-stop>
+      <div className="ribbon-copy">
+        <p className="eyebrow">About me</p>
+        <h2>Engineering,<br /><em>with curiosity.</em></h2>
+        <p>{profile.introduction}</p>
+        <details className="ribbon-detail"><summary>How I work <span aria-hidden="true">+</span></summary><div><p>{profile.about}</p><Link href="/about/" className="ribbon-link">More about me <Arrow diagonal /></Link></div></details>
+      </div>
+    </section>
+    <section className="ribbon-section ribbon-work" id="selected-work" data-ribbon-stop>
+      <div className="ribbon-work-heading"><p className="eyebrow">Selected work</p><h2>Ideas, <em>built.</em></h2><Link href="/work/" className="ribbon-link">All projects <Arrow diagonal /></Link></div>
+      <div className="ribbon-projects">
+        {featured.map(project => <details className="ribbon-project" key={project.slug} name="selected-project">
+          <summary><span><small>{project.category}</small><strong>{project.title}</strong></span><span className="ribbon-expand" aria-hidden="true">+</span></summary>
+          <div className="ribbon-project-body">
+            <img src={project.cover} alt={`${project.title} project identity`} width={800} height={500} loading="lazy" />
+            <p>{project.summary}</p><ul className="ribbon-stack">{project.stack.map(technology => <li key={technology}>{technology}</li>)}</ul>
+            <Link href={`/work/${project.slug}/`} className="ribbon-link">Explore the project <Arrow diagonal /></Link>
+          </div>
+        </details>)}
+      </div>
+    </section>
+    <section className="ribbon-section ribbon-lab" id="inside-lab" data-ribbon-stop>
+      <div className="ribbon-copy"><p className="eyebrow">Ongoing exploration</p><h2>A closer<br /><em>look.</em></h2>
+        <div className="ribbon-experiments">{experiments.map(experiment => <details className="ribbon-detail" key={experiment.slug}><summary>{experiment.title}<span aria-hidden="true">+</span></summary><div><p>{experiment.summary}</p><Link href={`/work/${experiment.project}/`} className="ribbon-link">Related project <Arrow diagonal /></Link></div></details>)}</div>
+        <Link href="/lab/" className="ribbon-link">Inside the lab <Arrow diagonal /></Link>
+      </div>
+    </section>
+  </>;
 }

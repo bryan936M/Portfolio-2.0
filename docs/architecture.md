@@ -88,3 +88,7 @@ These are adaptations around Bryan's actual content. The first rejected visual s
 ## Verification
 
 Use the commands in the root README. Verify both content and navigation with JavaScript, and inspect generated HTML/discovery files independently of hydration. Browser QA should cover desktop and narrow layouts, the mobile menu and focus, project filters and links, actual WebGL loading, meaningful static fallback, and contact destinations.
+
+## Current homepage composition
+
+`features/home/RibbonJourney` owns chapter navigation and reduced-motion detection. `three/RibbonScene` owns the scroll-controlled ribbon geometry, lights, camera, resize observer, renderer, and GPU cleanup. Rendering runs on demand and briefly settles after scroll changes. Content and expanders are server-rendered in `Home` and remain functional without JavaScript. Reduced motion omits WebGL, and context loss exposes the static CSS silhouette. Section offsets are remeasured when expanded content changes the page height. The publishing workflow is unchanged.

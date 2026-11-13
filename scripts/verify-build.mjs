@@ -56,12 +56,10 @@ for (const path of texturePaths) {
     "Every 3D texture must be a real same-origin PNG included in the static export",
   );
 }
-assert.ok(
-  home.includes(
-    `data-texture-count="${Math.min(2, profile.projects.filter((project) => project.featured).length)}"`,
-  ),
-  "Every selected-work surface needs a prepared same-origin texture",
-);
+for (const section of ["about-bryan", "selected-work", "inside-lab"]) {
+  assert.ok(home.includes(`id="${section}"`), `Homepage chapter ${section} is missing`);
+}
+assert.match(home, /<details\b/, "Expandable content must be present in generated HTML");
 assert.equal(profile.name, "Bryan Murasira");
 for (const project of profile.projects) {
   if (project.featured)

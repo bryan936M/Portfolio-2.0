@@ -133,3 +133,9 @@ Bryan requested a footer based on Gelbero Wilson's. Use a prominent contact invi
 ## 2026-11-13 — Homepage branch
 
 Bryan asked for a single branch to guide visitors as they scroll, using the existing colour theme. The branch enters from the right of the portrait and grows along the outside edge through the introduction, selected work, and Lab. Use the existing accent, paper, and night tokens for the branch. The [full tree journey](homepage-journey.md) is an archived concept.
+
+## 2026-11-13 — Ribbon journey overhaul
+
+Bryan requested saving the version through the branch and then overhauling the homepage around a selected minimalist interactive reference. The branch baseline is commit `c18c089`. Use Monopo London's continuous atmosphere, spare type, and generous spacing as the reference. The implementation uses a sage 3D ribbon that reframes with scroll, Bryan's portrait and name in the opening, and native expandable About, project, and Lab content. A fixed chapter navigation links directly to each destination. The established paper, ink, accent, and night palette supplies the experience. The sculpture and headings are an implementation proposal for visual review.
+
+Reference inspected in the browser on 13 November 2026. [Monopo London](https://monopo.london/)
