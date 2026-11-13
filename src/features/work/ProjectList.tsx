@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 import { useState } from "react";
 import type { Project } from "@/content/types";
 import { Arrow } from "@/components/ui/Arrow";
@@ -45,7 +45,7 @@ export function ProjectList({
           <span>Discipline</span>
         </p>
         {filtered.map((project, index) => (
-          <Link
+          <SiteLink
             key={project.slug}
             href={`/work/${project.slug}/`}
             className="project-row"
@@ -73,7 +73,7 @@ export function ProjectList({
               />
               <span>View project ↗</span>
             </div>
-          </Link>
+          </SiteLink>
         ))}
       </div>
       <p className="sr-only" aria-live="polite">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageArrival } from "@/components/motion/PageArrival";
 import { SiteMotion } from "@/components/motion/SiteMotion";
 import { getPortfolio, siteOrigin } from "@/lib/content";
 import "@/styles/globals.css";
@@ -62,9 +63,10 @@ export default async function RootLayout({
           Skip to content
         </a>
         <Header />
-        <main id="main">{children}</main>
+        <main id="main" tabIndex={-1}>{children}</main>
         <Footer profile={profile} />
         <SiteMotion />
+        <PageArrival />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

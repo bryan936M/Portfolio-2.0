@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 import { getPortfolio } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import { Arrow } from "@/components/ui/Arrow";
@@ -35,10 +35,10 @@ export default async function AboutPage() {
             Based in {profile.location}. Open to conversations about software
             engineering roles and full-stack or AI projects.
           </p>
-          <Link className="text-link" href="/contact/">
+          <SiteLink className="text-link" href="/contact/">
             Get in touch
             <Arrow diagonal />
-          </Link>
+          </SiteLink>
         </div>
       </section>
       <section className="about-disciplines content-width">

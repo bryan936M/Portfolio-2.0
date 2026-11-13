@@ -1114,27 +1114,75 @@ sup {
 .footer-email:hover {
   text-decoration-color: currentColor;
 }
-.context-cursor {
+.page-arrival {
   position: fixed;
-  left: -42px;
-  top: -42px;
+  inset: 0;
+  z-index: 100;
+  background: var(--paper);
+  opacity: 0;
+  pointer-events: none;
+}
+.glass-cursor {
+  position: fixed;
+  inset: 0 auto auto 0;
   z-index: 150;
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.2s;
-  will-change: transform;
+  visibility: hidden;
+  transition: opacity .16s, visibility .16s;
 }
-.context-cursor.is-visible {
+.glass-cursor[data-visible] {
   opacity: 1;
+  visibility: visible;
+}
+.glass-cursor-lens {
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  translate: -50% -50%;
+  scale: .25;
+  border-radius: 50%;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 30% 21%, rgb(255 255 255 / 64%), transparent 49%),
+    rgb(245 244 239 / 40%);
+  border: 1px solid rgb(245 244 239 / 78%);
+  box-shadow: inset 0 -2px 5px rgb(63 85 70 / 24%), 0 3px 12px rgb(36 39 35 / 22%);
+  backdrop-filter: blur(3px) saturate(1.3);
+  transition: scale .26s cubic-bezier(.2, .75, .25, 1), background-color .2s;
+}
+.glass-cursor[data-mode="hover"] .glass-cursor-lens {
+  scale: .6;
+}
+.glass-cursor[data-mode="label"] .glass-cursor-lens {
+  scale: 1;
+  background-color: rgb(245 244 239 / 78%);
+}
+.glass-cursor-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgb(245 244 239 / 86%);
+  box-shadow: 0 0 0 1px rgb(63 85 70 / 30%);
+  opacity: 0;
+}
+.glass-cursor-label {
+  position: relative;
+  font-size: 12px;
+  font-weight: 500;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  html[data-glass-cursor],
+  html[data-glass-cursor] * {
+    cursor: none !important;
+  }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce), (forced-colors: active) {
+  .glass-cursor {
+    display: none;
+  }
 }
 body:has(.contact-page) .footer-lead {
   display: none;
@@ -1149,7 +1197,6 @@ body:has(.contact-page) .footer-main {
 
 @media (hover: hover) and (pointer: fine) {
   .project-row:hover {
-    cursor: none;
     padding-inline: 15px;
   }
   .lab-entry:hover {
@@ -1671,9 +1718,6 @@ body:has(.contact-page) .footer-main {
   .not-found h1 {
     font-size: 80px;
   }
-  .context-cursor {
-    display: none;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1687,8 +1731,5 @@ body:has(.contact-page) .footer-main {
   }
   .hero h1 {
     will-change: auto;
-  }
-  .context-cursor {
-    display: none;
   }
 }

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 import { notFound } from "next/navigation";
 import { getPortfolio, siteOrigin } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
@@ -47,9 +47,9 @@ export default async function ProjectPage({
   return (
     <article className="page-shell">
       <header className="case-heading content-width">
-        <Link className="back-link" href="/work/">
+        <SiteLink className="back-link" href="/work/">
           ← All work
-        </Link>
+        </SiteLink>
         <p className="eyebrow">{project.category}</p>
         <h1>{project.title}</h1>
         <p className="case-summary">{project.summary}</p>
@@ -84,10 +84,10 @@ export default async function ProjectPage({
       )}
       <div className="case-next content-width">
         <p className="eyebrow">Next project</p>
-        <Link href={`/work/${next.slug}/`}>
+        <SiteLink href={`/work/${next.slug}/`}>
           {next.title}
           <Arrow diagonal />
-        </Link>
+        </SiteLink>
       </div>
       <script
         type="application/ld+json"

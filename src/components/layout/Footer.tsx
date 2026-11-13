@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 import type { Profile } from "@/content/types";
 import { siteLinks } from "@/components/layout/navigation";
 import { Arrow } from "@/components/ui/Arrow";
@@ -13,9 +13,9 @@ export function Footer({ profile }: { profile: Profile }) {
             <h2>Let’s work <em>together.</em></h2>
             <p>Have a project or a role in mind?</p>
             <div className="footer-actions">
-              <Link className="footer-cta" href="/contact/">
+              <SiteLink className="footer-cta" href="/contact/">
                 Get in touch <Arrow diagonal />
-              </Link>
+              </SiteLink>
               <a className="footer-email" href={`mailto:${profile.email}`}>
                 {profile.email}
               </a>
@@ -25,11 +25,11 @@ export function Footer({ profile }: { profile: Profile }) {
             <p className="footer-label">Quick links</p>
             <ul className="footer-links">
               <li>
-                <Link href="/">Home</Link>
+                <SiteLink href="/">Home</SiteLink>
               </li>
               {siteLinks.map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href}>{label}</Link>
+                  <SiteLink href={href}>{label}</SiteLink>
                 </li>
               ))}
             </ul>
@@ -52,11 +52,11 @@ export function Footer({ profile }: { profile: Profile }) {
           </div>
         </div>
         <div className="footer-bottom">
-          <Link className="footer-identity" href="/">
+          <SiteLink className="footer-identity" href="/">
             <BrandMark />
             <span>© {new Date().getFullYear()} {profile.name}</span>
             <span className="sr-only">Home</span>
-          </Link>
+          </SiteLink>
           <a className="footer-top-link" href="#top">
             Back to top <Arrow />
           </a>

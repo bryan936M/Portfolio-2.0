@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 import { getPortfolio } from "@/lib/content";
 import { pageMetadata } from "@/lib/metadata";
 import { Arrow } from "@/components/ui/Arrow";
@@ -32,7 +32,7 @@ export default async function LabPage() {
           );
           if (!project) return null;
           return (
-            <Link
+            <SiteLink
               className="lab-entry"
               href={`/work/${project.slug}/`}
               key={experiment.slug}
@@ -48,7 +48,7 @@ export default async function LabPage() {
                 <span>Within {project.title}</span>
                 <Arrow diagonal />
               </div>
-            </Link>
+            </SiteLink>
           );
         })}
       </section>

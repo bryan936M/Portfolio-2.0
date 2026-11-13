@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { siteLinks } from "@/components/layout/navigation";
@@ -22,7 +22,7 @@ export function Header() {
   }, [open]);
   return (
     <header className="site-header">
-      <Link
+      <SiteLink
         className="identity"
         href="/"
         onClick={() => setOpen(false)}
@@ -30,7 +30,7 @@ export function Header() {
       >
         <BrandMark className="identity-mark" />
         <span className="identity-name">Bryan Murasira</span>
-      </Link>
+      </SiteLink>
       <button
         ref={toggle}
         type="button"
@@ -48,7 +48,7 @@ export function Header() {
         aria-label="Main navigation"
       >
         {siteLinks.map(([label, href]) => (
-          <Link
+          <SiteLink
             key={href}
             href={href}
             aria-current={
@@ -58,7 +58,7 @@ export function Header() {
           >
             {label}
             <span className="nav-dot" aria-hidden="true" />
-          </Link>
+          </SiteLink>
         ))}
       </nav>
     </header>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SiteLink } from "@/components/layout/SiteLink";
 export default function NotFound() {
   return (
     <section className="not-found content-width">
@@ -8,9 +8,9 @@ export default function NotFound() {
         <br />
         <em>here.</em>
       </h1>
-      <Link href="/" className="text-link">
+      <SiteLink href="/" className="text-link">
         Back to home ↗
-      </Link>
+      </SiteLink>
     </section>
   );
 }

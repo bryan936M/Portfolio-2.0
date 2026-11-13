@@ -9,7 +9,7 @@ Updated: 2026-10-25
 - Three.js through React Three Fiber for project-cover depth; loaded near the viewport. On-demand rendering updates with scroll. Reduced-motion users receive the same project content with a static presentation.
 - Published covers used by the 3D stage are prepared as PNGs in `public/images/textures/`. Build and dev startup prepare them before Next.js scans public assets; server content reads also prepare newly encountered covers. The browser loads same-origin textures, independent of its URL or Sanity's browser-origin list. Generated files are cached by immutable asset ID and excluded from Git.
 - GSAP for section entrances and the name/scroll choreography. Simple interface transitions remain CSS-owned.
-- The homepage owns the BM opening. A small inline script measures the header mark and enables the CSS sequence on direct homepage loads and reloads. The decorative layer starts hidden and the hero is part of the generated HTML.
+- The homepage owns the BM opening. A client layout effect measures the header mark and enables the CSS sequence once per direct homepage load. The decorative layer starts hidden and the hero is part of the generated HTML.
 - The homepage branch is an inline SVG in `features/home/HomeBranch.tsx`. Motion binds its reveal to native scroll. The decorative layer sits outside the document flow and the static illustration works with reduced motion or without JavaScript.
 - Self-hosted Geist and Newsreader fonts and semantic CSS tokens. The reference composition, not a UI kit, defines the public interface.
 
@@ -92,3 +92,5 @@ Use the commands in the root README. Verify both content and navigation with Jav
 ## Current homepage composition
 
 `features/home/RibbonJourney` owns chapter navigation and reduced-motion detection. `three/RibbonScene` owns the scroll-controlled ribbon geometry, lights, camera, resize observer, renderer, and GPU cleanup. Rendering runs on demand and briefly settles after scroll changes. Content and expanders are server-rendered in `Home` and remain functional without JavaScript. Reduced motion omits WebGL, and context loss exposes the static CSS silhouette. Section offsets are remeasured when expanded content changes the page height. The publishing workflow is unchanged.
+
+Internal page links record a top-of-page intent for the next route commit. A persistent arrival component applies it and fades a decorative paper layer. Native anchors and history traversal retain their destinations. The homepage enhances chapter anchors and native disclosure controls after hydration. The shared cursor layer activates only for a mouse with motion allowed.
