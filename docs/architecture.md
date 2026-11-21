@@ -9,7 +9,7 @@ Updated: 2026-10-25
 - Three.js through React Three Fiber for project-cover depth; loaded near the viewport. On-demand rendering updates with scroll. Reduced-motion users receive the same project content with a static presentation.
 - Published covers used by the 3D stage are prepared as PNGs in `public/images/textures/`. Build and dev startup prepare them before Next.js scans public assets; server content reads also prepare newly encountered covers. The browser loads same-origin textures, independent of its URL or Sanity's browser-origin list. Generated files are cached by immutable asset ID and excluded from Git.
 - GSAP for section entrances and the name/scroll choreography. Simple interface transitions remain CSS-owned.
-- The homepage owns the BM opening. A client layout effect measures the header mark and enables the CSS sequence once per direct homepage load. The decorative layer starts hidden and the hero is part of the generated HTML.
+- The homepage owns the BM opening. One synchronous document-head controller shows a paper cover before the body paints, then measures the static BM markup after HTML parsing and starts its 2.7-second CSS sequence. React hydration is independent of the opening. The opening’s own animation-end event completes it. Deliberate pointer, wheel, touch-move, and keyboard input can skip it. Browser scroll, resize, and focus events do not cancel playback. A single watchdog allows eight seconds for document startup and resets to 3.5 seconds when animation begins. Page exit and completion remove listeners, timers, and temporary root styles. Reduced motion, deep links, history restoration, and JavaScript-free browsing expose the page immediately.
 - The homepage branch is an inline SVG in `features/home/HomeBranch.tsx`. Motion binds its reveal to native scroll. The decorative layer sits outside the document flow and the static illustration works with reduced motion or without JavaScript.
 - Self-hosted Geist and Newsreader fonts and semantic CSS tokens. The reference composition, not a UI kit, defines the public interface.
 
@@ -57,6 +57,8 @@ Projects have stable slugs, title/summary/category, technologies, cover, feature
 The checked-in content supplies the initial portfolio before seeding. After CMS content exists, removing all projects does not resurrect seed projects. Production builds fail on CMS read errors unless the operator explicitly opts into fallback; development can use the checked-in content.
 
 `npm run build` assigns a unique, public Sanity request tag to each build. Routes within a build share the query/cache key, while a later build cannot reuse an older published response from Next's restored fetch cache. Always use the package build command for deployment.
+
+The package build enforces the supported Node 22 security patch floor and runs the generated-output verifier after a successful Next.js build. CI runs clean-install application and Studio checks plus the complete workspace audit policy on pull requests/main. Exact moderate CLI-only exceptions are version/path/parent-bound and expire; high/critical findings cannot be waived. This adds release checks without changing the static hosting or CMS publishing boundaries.
 
 ## Publishing contract
 

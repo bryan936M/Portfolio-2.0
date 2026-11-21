@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { PageArrival } from "@/components/motion/PageArrival";
 import { SiteMotion } from "@/components/motion/SiteMotion";
 import { getPortfolio, siteOrigin } from "@/lib/content";
+import { openingBootstrap } from "@/features/home/opening-bootstrap";
 import "@/styles/globals.css";
 
 export const dynamic = "force-static";
@@ -57,7 +58,10 @@ export default async function RootLayout({
     },
   };
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script id="home-opening-bootstrap" dangerouslySetInnerHTML={{ __html: openingBootstrap }} />
+      </head>
       <body id="top">
         <a className="skip-link" href="#main">
           Skip to content

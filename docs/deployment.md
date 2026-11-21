@@ -11,10 +11,11 @@ The Git production branch and Sanity Deploy Hook target `main`. Review changes c
 ## Build contract
 
 - Import `bryan936M/Portfolio-2.0` with the repository root as Root Directory.
-- Use the Next.js preset and Node.js 22.x.
+- Use the Next.js preset and managed Node.js 22.x. Local checks and CI pin Node 22.23.5; builds reject earlier Node 22 patches.
 - Install with `npm ci --no-audit --no-fund` and build with `npm run build`.
 - Next.js detects the static export from `next.config.ts`. Do not select the separate `studio` workspace as the website project.
 - `vercel.json` records these build settings. `.vercelignore` excludes local environment files, generated output, and editor runtime files from CLI uploads. `.vercel/` linking state is ignored by Git.
+- The package build command runs the output verifier after Next.js succeeds. CI additionally runs the workspace security gate, application/Studio typechecks, and regression tests after a clean install. See [Security](security.md) for the exact tooling exception and release policy.
 
 ## Environment and metadata
 
