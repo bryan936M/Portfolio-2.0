@@ -78,6 +78,7 @@ WebGL image textures are generated as same-origin PNGs from the published covers
 ```sh
 npm run typecheck
 npm run test:contact
+node --experimental-strip-types --test tests/home-opening.test.mjs
 npm run build
 npm run verify
 npm run studio:build

@@ -147,3 +147,11 @@ Bryan selected and authorised the editorial-stack refinement: name and roles abo
 ## 2026-11-13 — Name, portrait, and ribbon opening
 
 Bryan clarified that the redesign is mobile only. The phone hero leads with a closer portrait and sage ribbon, followed by the name in sans serif and italic Newsreader. The Monopo-inspired full-screen menu replaces the mobile chapter bar. The desktop hero and navigation retain their original composition.
+
+## 2026-11-20 — BM cover before hydration
+
+Bryan reported the homepage appearing before its BM opening. Establish the cover during initial document parsing, before React hydration, and let the existing client lifecycle handle the logo handoff. Pending startup times out after 4.5 seconds. Keep interaction cancellation and immediate content for reduced motion, deep links, history restoration, and JavaScript-free browsing. The root layout owns the early inline script so client navigation does not insert an executable script in the homepage component.
+
+## 2026-11-21 — Single BM opening controller
+
+Bryan requested reviewing and simplifying the loading feature after its cover disappeared early. Replace the bootstrap-to-React handoff with one document-level controller that starts the existing CSS animation after HTML parsing. HomeOpening becomes static logo markup. Complete on the overlay’s own animation-end event, and skip on deliberate input. Natural scroll, resize, and focus events cannot dismiss it. Use one resettable failure watchdog, with an eight-second startup limit and a 3.5-second playback limit.

@@ -25,77 +25,89 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  body:has(.home-opening[data-playing]) {
+  html[data-home-opening="pending"] body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background: var(--paper);
+    pointer-events: none;
+  }
+
+  html[data-home-opening="pending"] .home-opening {
+    visibility: visible;
+  }
+
+  html[data-home-opening="pending"] .home-opening path {
+    transform-box: view-box;
+    opacity: .78;
+    transform: translate(-27%, -28%);
+  }
+
+  html[data-home-opening="pending"] .home-opening path:nth-child(2) {
+    transform: translate(-27%, 28%);
+  }
+
+  html[data-home-opening="pending"] .home-opening path:nth-child(3) {
+    transform: translate(28%, 0%);
+  }
+
+  html[data-home-opening="playing"] {
     --opening-handoff-start: 1180ms;
     --opening-handoff-duration: 940ms;
     --opening-sweep: cubic-bezier(.76, 0, .24, 1);
   }
 
-  .home-opening[data-playing] {
+  html[data-home-opening="playing"] .home-opening {
     animation: home-opening-visibility 2700ms step-end both;
   }
 
-  .home-opening[data-playing]::before {
+  html[data-home-opening="playing"] .home-opening::before {
     animation: home-opening-paper 840ms var(--opening-sweep) var(--opening-handoff-start) both;
   }
 
-  .home-opening[data-playing] .home-opening-mark {
+  html[data-home-opening="playing"] .home-opening .home-opening-mark {
     animation: home-opening-handoff var(--opening-handoff-duration) var(--opening-sweep) var(--opening-handoff-start) both;
   }
 
-  .home-opening[data-playing] path {
+  html[data-home-opening="playing"] .home-opening path {
     --part-x: -27%;
     --part-y: -28%;
     transform-box: view-box;
     animation: home-opening-assemble 840ms cubic-bezier(.35, .06, .24, 1) both;
   }
 
-  .home-opening[data-playing] path:nth-child(2) {
+  html[data-home-opening="playing"] .home-opening path:nth-child(2) {
     --part-y: 28%;
     animation-delay: 64ms;
   }
 
-  .home-opening[data-playing] path:nth-child(3) {
+  html[data-home-opening="playing"] .home-opening path:nth-child(3) {
     --part-x: 28%;
     --part-y: 0%;
     animation-delay: 130ms;
   }
 
-  body:has(.home-opening[data-playing]) .identity-mark {
+  html[data-home-opening="playing"] .identity-mark {
     animation: home-opening-header-mark calc(var(--opening-handoff-start) + var(--opening-handoff-duration)) step-end both;
   }
 
-  body:has(.home-opening[data-playing]) .site-header :is(.identity-name, .main-navigation, .menu-toggle) {
+  html[data-home-opening="playing"] .site-header :is(.identity-name, .main-navigation, .menu-toggle) {
     animation: home-opening-header-text 780ms cubic-bezier(.16, 1, .3, 1) calc(var(--opening-handoff-start) + 650ms) both;
   }
 
-  .home-opening[data-playing] ~ .hero :is(h1, .hero-media, .hero-role, .hero-location, .hero-scroll) {
-    animation: home-opening-reveal var(--reveal-duration) cubic-bezier(.16, 1, .3, 1) calc(var(--opening-handoff-start) + var(--reveal-delay)) both;
-  }
-
-  .home-opening[data-playing] ~ .hero h1 {
-    --reveal-rise: 50%;
-    --reveal-duration: 930ms;
-    --reveal-delay: 120ms;
-  }
-
-  .home-opening[data-playing] ~ .hero .hero-media {
+  html[data-home-opening="playing"] .ribbon-hero :is(.ribbon-portrait, .ribbon-hero-intro, .ribbon-mobile-marquee, .ribbon-mobile-scroll) {
+    animation: home-opening-reveal 1000ms cubic-bezier(.16, 1, .3, 1) 1400ms both;
     --reveal-rise: 5%;
-    --reveal-duration: 990ms;
-    --reveal-delay: 300ms;
   }
 
-  .home-opening[data-playing] ~ .hero .hero-role {
-    --reveal-rise: 20%;
-    --reveal-duration: 860ms;
-    --reveal-delay: 500ms;
+  @media (min-width: 641px) {
+    html[data-home-opening="playing"] .ribbon-hero h1 {
+      animation: home-opening-reveal 930ms cubic-bezier(.16, 1, .3, 1) 1300ms both;
+      --reveal-rise: 50%;
+    }
   }
 
-  .home-opening[data-playing] ~ .hero :is(.hero-location, .hero-scroll) {
-    --reveal-rise: 35%;
-    --reveal-duration: 700ms;
-    --reveal-delay: 810ms;
-  }
 }
 
 @keyframes home-opening-visibility {
