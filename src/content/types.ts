@@ -33,6 +33,7 @@ export interface Profile {
   name: string;
   roles: string[];
   location: string;
+  workCountries: string[];
   email: string;
   github: string;
   linkedin: string;

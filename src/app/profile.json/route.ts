@@ -1,4 +1,5 @@
 import { getPortfolio, siteOrigin } from "@/lib/content";
+import { resolveWorkCountries } from "@/content/work-countries";
 export const dynamic = "force-static";
 export async function GET() {
   const { profile, projects } = await getPortfolio();
@@ -6,6 +7,7 @@ export async function GET() {
     name: profile.name,
     roles: profile.roles,
     location: profile.location,
+    workCountries: resolveWorkCountries(profile.workCountries).map(({ code, name }) => ({ code, name })),
     contact: profile.email,
     url: siteOrigin,
     sameAs: [profile.github, profile.linkedin],

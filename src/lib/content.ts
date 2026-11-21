@@ -3,6 +3,7 @@ import { createClient } from "@sanity/client";
 import seed from "@/content/portfolio.json";
 import type { Portfolio, Profile, Project, Experiment } from "@/content/types";
 import { prepareTexture } from "@/lib/texture-assets.server.mjs";
+import { resolveWorkCountries } from "@/content/work-countries";
 
 export const sanityProjectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "i5u4ixfm";
@@ -87,6 +88,7 @@ export const getPortfolio = cache(async (): Promise<Portfolio> => {
   profile.portrait = safeUrl(profile.portrait, seed.profile.portrait);
   profile.github = safeUrl(profile.github, seed.profile.github);
   profile.linkedin = safeUrl(profile.linkedin, seed.profile.linkedin);
+  profile.workCountries = resolveWorkCountries(profile.workCountries).map(country => country.code);
   const hasCmsContent = Boolean(remote?.profile || remote?.projects?.length);
   const projects: Project[] = (
     hasCmsContent ? remote!.projects : (seed.projects as Project[])

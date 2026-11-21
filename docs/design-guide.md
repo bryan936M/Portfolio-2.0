@@ -112,3 +112,11 @@ Short summaries expand using native details/summary controls. Project entries re
 The desktop hero retains its roles, work link, portrait, ribbon, and chapter navigation. At widths up to 640px, adapt the composition from Bryan’s Vadim Carazan reference with a full-screen portrait, two oversized italic name lines at the lower left, and a round arrow to About. Use Bryan’s photo and the existing paper, ink, and sage palette. The ribbon passes behind the portrait and continues through the scroll journey.
 
 Adapt the [Monopo London header](https://monopo.london/) on phones only. Three vertical lines open a paper panel with ruled navigation rows near the bottom and a triangular current-page marker. The BM mark and portfolio routes anchor the design in the existing paper, ink, and sage palette.
+
+## Work locations — glass globe
+
+The homepage About section pairs the existing introduction with an Africa-facing sage glass globe. Adapt the raised, reflective land surfaces from [Zeam’s illustration](https://www.zeam.money/business/features/global-treasury-overview) and the restrained spatial movement from [Cinematic 3D Globe](https://www.framer.com/marketplace/components/cinematic-3d-globe/). The artwork and Three.js code are original; neither reference’s proprietary asset or component is included.
+
+Use approximately equal text and illustration columns from 960px, with the globe below the text at narrower widths. Keep a soft paper backdrop immediately behind the globe. The hero, portrait, fonts, palette, and ribbon journey remain unchanged. The caption is “Where I’ve worked.” Rwanda, Benin, and Zambia are confirmed by Bryan; markers indicate countries, not specific workplaces or cities.
+
+Africa stays forward as the globe rocks five degrees over fourteen seconds. HTML country controls remain stationary, with thin leaders connecting them to projected stems. Pointer hover, keyboard focus, and tap selection highlight the matching marker and pause movement. Do not capture drag or scroll input. More than six countries use a wrapping legend below the illustration to avoid crowding. Reduced motion and failed WebGL retain the server-rendered SVG globe and country list.
