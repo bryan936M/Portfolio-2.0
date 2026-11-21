@@ -8,6 +8,12 @@ Bryan approved fixing all high/critical and reachable dependency issues, permitt
 
 Release the security baseline and committed BM fix first, preserving it as the secure rollback target. Integrate and release the checkpointed globe next, deploy its Studio schema, and publish only the confirmed RW/BJ/ZM country field with revision checks. Preserve unrelated draft content and existing Vercel protection. CI checks and the post-build output verifier extend the release checks to subsequent code and CMS builds.
 
+## 2026-11-21 — Africa-focused work-location globe
+
+Bryan approved an original sage glass globe in the homepage About section on desktop and mobile, using Zeam’s raised-glass illustration and Cinematic 3D Globe’s restrained motion as visual references. Africa stays forward with five-degree rocking over fourteen seconds. Rwanda, Benin, and Zambia have country-level stems and HTML controls; hover/focus/tap highlights a marker and pauses motion. Preserve the existing hero, portrait, palette, typography, and ribbon.
+
+Work countries are editable as an ordered African-country list in the Sanity profile. Missing values initialize to RW/BJ/ZM; deliberate empty lists hide the globe. Initialize existing content in a draft to avoid triggering the production rebuild during local review. Static HTML/SVG, reduced-motion behavior, and WebGL recovery are required. This work is for local review on port 3010; website and Studio publication are separate release steps. The preceding BM fix is checkpointed in `6d82b82`.
+
 ## 2026-10-25 — Audience and visual direction
 
 - Address employers/technical hiring teams and prospective clients equally.

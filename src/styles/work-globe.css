@@ -1,0 +1,48 @@
+.ribbon-about-with-globe { gap:2%; align-items:center; overflow:clip; }
+.ribbon-about-with-globe > .ribbon-copy { flex:0 1 48%; min-width:0; }
+.work-locations { flex:1 1 50%; min-width:0; margin:0; position:relative; isolation:isolate; }
+.work-locations::before { content:""; position:absolute; z-index:-1; inset:-12%; background:radial-gradient(ellipse,var(--paper) 48%,color-mix(in srgb,var(--paper) 96%,transparent) 57%,transparent 73%); pointer-events:none; }
+.work-globe { position:relative; width:100%; }
+.work-globe-stage { position:relative; width:100%; aspect-ratio:1; isolation:isolate; }
+.work-globe-stage::after { content:""; position:absolute; left:23%; right:23%; bottom:4%; height:5%; border-radius:50%; background:#61776224; filter:blur(12px); z-index:-1; }
+.work-globe-still,.work-globe-canvas,.work-globe-leaders { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.work-globe-still { opacity:1; transition:opacity .6s; }
+.work-globe-canvas { opacity:0; transition:opacity .6s; mask-image:radial-gradient(ellipse,#000 55%,transparent 72%); }
+.work-globe[data-ready="true"] .work-globe-still { opacity:0; }
+.work-globe[data-ready="true"] .work-globe-canvas { opacity:1; }
+.work-globe-leaders { z-index:1; overflow:visible; fill:var(--accent); }
+.work-globe-leaders polyline { fill:none; stroke:#6c816c; stroke-width:1; opacity:.65; }
+.work-globe-leaders line { stroke:var(--accent); stroke-width:1.4; }
+.work-globe-leaders [data-root] { fill:var(--paper); stroke:var(--accent); stroke-width:1.3; }
+.work-globe-leaders [data-highlight="true"] { filter:drop-shadow(0 0 5px #3f554648); }
+.work-globe-leaders [data-highlight="true"] polyline { opacity:1; stroke:var(--accent); stroke-width:1.8; }
+.work-globe-labels { position:absolute; inset:0; margin:0; padding:0; list-style:none; z-index:2; pointer-events:none; }
+.work-globe-labels li { position:absolute; transform:translateY(-50%); max-width:40%; pointer-events:auto; }
+.work-globe-labels li[data-side="right"] { transform:translate(-100%,-50%); }
+.work-globe-labels button { display:flex; align-items:center; gap:9px; min-height:44px; min-width:44px; max-width:100%; padding:10px 7px; border:0; border-radius:3px; background:color-mix(in srgb,var(--paper) 88%,transparent); color:var(--ink); font:inherit; font-size:clamp(12px,1vw,14px); line-height:1.3; text-align:left; cursor:pointer; transition:background .25s,color .25s; }
+.work-globe-labels button:hover,.work-globe-labels button[data-highlight="true"] { background:var(--accent); color:var(--paper); }
+.work-globe-labels button:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+.work-country-dot { width:4px; height:4px; flex-shrink:0; border-radius:50%; background:currentColor; }
+.work-locations figcaption { padding:0 12px; text-align:center; color:var(--muted); font-size:13px; letter-spacing:-.015em; }
+.work-locations figcaption em { color:var(--accent); font-family:var(--serif); font-size:1.4em; }
+.work-globe-dense .work-globe-labels { position:relative; display:flex; flex-wrap:wrap; justify-content:center; gap:6px 12px; margin-bottom:20px; }
+.work-globe-dense .work-globe-labels li,.work-globe-dense .work-globe-labels li[data-side="right"] { position:static; transform:none; max-width:100%; }
+@media(max-width:959px) {
+  .ribbon-about-with-globe { flex-direction:column; align-items:stretch; gap:30px; }
+  .ribbon-about-with-globe > .ribbon-copy { width:100%; max-width:680px; flex:auto; }
+  .work-locations { width:min(100%,580px); align-self:center; flex:auto; }
+}
+@media(max-width:640px) {
+  .ribbon-about-with-globe { gap:0; padding-bottom:70px; }
+  .work-locations { margin-top:12px; }
+  .work-globe-labels button { gap:6px; padding-inline:5px; font-size:12px; }
+  .work-locations figcaption { margin-top:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .work-globe-still,.work-globe-canvas,.work-globe-labels button { transition:none; }
+}
+@media(forced-colors:active) {
+  .work-globe-labels button { border:1px solid ButtonText; }
+  .work-globe-canvas { display:none; }
+  .work-globe[data-ready="true"] .work-globe-still { opacity:1; }
+}

@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
+import { africanCountries, initialWorkCountries } from "../src/content/work-countries";
 
 const alt = defineField({
   name: "alt",
@@ -270,6 +271,15 @@ const portfolioProfile = defineType({
     }),
     defineField({ name: "portraitUrl", type: "string", hidden: true }),
     defineField({ name: "location", type: "string" }),
+    defineField({
+      name: "workCountries",
+      title: "Work countries",
+      description: "Countries where you’ve worked. Reorder them to change the reading order. An empty list hides the homepage globe. Publishing updates the website after its rebuild.",
+      type: "array",
+      initialValue: initialWorkCountries,
+      of: [{ type: "string", options: { list: africanCountries.map(country => ({ title: country.name, value: country.code })) } }],
+      validation: rule => rule.unique(),
+    }),
     defineField({
       name: "introduction",
       title: "Homepage introduction",

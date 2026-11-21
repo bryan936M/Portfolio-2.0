@@ -49,6 +49,14 @@ npm exec --workspace @bryan/studio -- sanity exec ./seed.mjs --with-user-token
 
 The seed command is restricted to the selected project/dataset and uses `createIfNotExists`. Authentication stays in Sanity's local CLI session; no write token is placed in the website or repository.
 
+The profile’s **Work countries** list controls the homepage globe. Choose African countries, reorder or remove them, and publish through the normal workflow when ready. An empty list hides the globe. For an existing profile, initialize only its missing field in a draft without publishing:
+
+```sh
+npm exec --workspace @bryan/studio -- sanity exec ./initialize-work-countries.mjs --with-user-token
+```
+
+The globe’s geometry is bundled locally. Run `npm run prepare:globe` only when its checked-in coastline input changes; source details are in [Globe geography](docs/globe-data.md).
+
 ## Contact form
 
 The Contact page uses Formspree to deliver name, email, and message submissions to Bryan's inbox. It retains the direct email and social links. Set `NEXT_PUBLIC_FORMSPREE_FORM_ID` to the public ID from the real form endpoint (`https://formspree.io/f/ID`) in Vercel's preview and production environments, then rebuild. Confirm the recipient inbox in Formspree before enabling delivery. The browser contains no account/API secret. Without an ID, the existing direct-email inquiry paths remain available.
@@ -82,8 +90,8 @@ npm run typecheck
 npm run test:opening
 npm run test:security
 npm run security:check
+npm run test:globe
 npm run test:contact
-node --experimental-strip-types --test tests/home-opening.test.mjs
 npm run build
 npm run verify
 npm run studio:build

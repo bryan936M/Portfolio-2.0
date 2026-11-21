@@ -61,6 +61,18 @@ for (const section of ["about-bryan", "selected-work", "inside-lab"]) {
 }
 assert.match(home, /<details\b/, "Expandable content must be present in generated HTML");
 assert.equal(profile.name, "Bryan Murasira");
+assert.ok(Array.isArray(profile.workCountries), "Work countries must be available to online agents");
+for (const country of profile.workCountries) {
+  assert.match(country.code, /^[A-Z]{2}$/);
+  assert.ok(country.name);
+  assert.ok(home.includes(`data-work-country="${country.code}"`), `${country.name} needs a server-rendered country control`);
+}
+if (profile.workCountries.length) {
+  assert.ok(home.includes("Where I’ve"));
+  const globe = JSON.parse(await read("models/work-globe.json"));
+  assert.ok(globe.positions.length > 0 && globe.positions.length % 3 === 0);
+  assert.ok(globe.indices.every(index => Number.isInteger(index) && index >= 0 && index < globe.positions.length / 3));
+} else assert.ok(!home.includes('class="work-locations"'), "An empty country list must hide the globe");
 for (const project of profile.projects) {
   if (project.featured)
     assert.ok(

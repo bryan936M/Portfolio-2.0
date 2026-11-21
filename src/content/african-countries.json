@@ -1,0 +1,326 @@
+[
+  {
+    "code": "DZ",
+    "name": "Algeria",
+    "longitude": 2.8082,
+    "latitude": 27.3974
+  },
+  {
+    "code": "AO",
+    "name": "Angola",
+    "longitude": 17.9842,
+    "latitude": -12.1828
+  },
+  {
+    "code": "BJ",
+    "name": "Benin",
+    "longitude": 2.352,
+    "latitude": 10.3248
+  },
+  {
+    "code": "BW",
+    "name": "Botswana",
+    "longitude": 24.1792,
+    "latitude": -22.1026
+  },
+  {
+    "code": "BF",
+    "name": "Burkina Faso",
+    "longitude": -1.3639,
+    "latitude": 12.673
+  },
+  {
+    "code": "BI",
+    "name": "Burundi",
+    "longitude": 29.9171,
+    "latitude": -3.3328
+  },
+  {
+    "code": "CM",
+    "name": "Cameroon",
+    "longitude": 12.4735,
+    "latitude": 4.585
+  },
+  {
+    "code": "CV",
+    "name": "Cape Verde",
+    "longitude": -23.6394,
+    "latitude": 15.0748
+  },
+  {
+    "code": "CF",
+    "name": "Central African Republic",
+    "longitude": 20.9069,
+    "latitude": 6.9897
+  },
+  {
+    "code": "TD",
+    "name": "Chad",
+    "longitude": 18.645,
+    "latitude": 15.143
+  },
+  {
+    "code": "KM",
+    "name": "Comoros",
+    "longitude": 43.3181,
+    "latitude": -11.7277
+  },
+  {
+    "code": "CD",
+    "name": "Democratic Republic of the Congo",
+    "longitude": 23.4588,
+    "latitude": -1.8582
+  },
+  {
+    "code": "DJ",
+    "name": "Djibouti",
+    "longitude": 42.4988,
+    "latitude": 11.9763
+  },
+  {
+    "code": "EG",
+    "name": "Egypt",
+    "longitude": 29.4458,
+    "latitude": 26.1862
+  },
+  {
+    "code": "GQ",
+    "name": "Equatorial Guinea",
+    "longitude": 8.9902,
+    "latitude": 2.333
+  },
+  {
+    "code": "ER",
+    "name": "Eritrea",
+    "longitude": 38.2856,
+    "latitude": 15.7874
+  },
+  {
+    "code": "SZ",
+    "name": "Eswatini",
+    "longitude": 31.4673,
+    "latitude": -26.5337
+  },
+  {
+    "code": "ET",
+    "name": "Ethiopia",
+    "longitude": 39.0886,
+    "latitude": 8.0328
+  },
+  {
+    "code": "GA",
+    "name": "Gabon",
+    "longitude": 11.8359,
+    "latitude": -0.4377
+  },
+  {
+    "code": "GH",
+    "name": "Ghana",
+    "longitude": -1.0369,
+    "latitude": 7.7176
+  },
+  {
+    "code": "GN",
+    "name": "Guinea",
+    "longitude": -10.0164,
+    "latitude": 10.6185
+  },
+  {
+    "code": "GW",
+    "name": "Guinea-Bissau",
+    "longitude": -14.5241,
+    "latitude": 12.1637
+  },
+  {
+    "code": "CI",
+    "name": "Ivory Coast",
+    "longitude": -5.5686,
+    "latitude": 7.4914
+  },
+  {
+    "code": "KE",
+    "name": "Kenya",
+    "longitude": 37.9076,
+    "latitude": 0.549
+  },
+  {
+    "code": "LS",
+    "name": "Lesotho",
+    "longitude": 28.2466,
+    "latitude": -29.4802
+  },
+  {
+    "code": "LR",
+    "name": "Liberia",
+    "longitude": -9.4604,
+    "latitude": 6.4472
+  },
+  {
+    "code": "LY",
+    "name": "Libya",
+    "longitude": 18.011,
+    "latitude": 26.6389
+  },
+  {
+    "code": "MG",
+    "name": "Madagascar",
+    "longitude": 46.7042,
+    "latitude": -18.6283
+  },
+  {
+    "code": "MW",
+    "name": "Malawi",
+    "longitude": 33.6081,
+    "latitude": -13.3867
+  },
+  {
+    "code": "ML",
+    "name": "Mali",
+    "longitude": -2.0385,
+    "latitude": 18.6927
+  },
+  {
+    "code": "MR",
+    "name": "Mauritania",
+    "longitude": -9.7403,
+    "latitude": 19.5871
+  },
+  {
+    "code": "MU",
+    "name": "Mauritius",
+    "longitude": 57.5658,
+    "latitude": -20.2995
+  },
+  {
+    "code": "MA",
+    "name": "Morocco",
+    "longitude": -7.1873,
+    "latitude": 31.6507
+  },
+  {
+    "code": "MZ",
+    "name": "Mozambique",
+    "longitude": 37.8379,
+    "latitude": -13.9432
+  },
+  {
+    "code": "NA",
+    "name": "Namibia",
+    "longitude": 17.1082,
+    "latitude": -20.5753
+  },
+  {
+    "code": "NE",
+    "name": "Niger",
+    "longitude": 9.5044,
+    "latitude": 17.4462
+  },
+  {
+    "code": "NG",
+    "name": "Nigeria",
+    "longitude": 7.5032,
+    "latitude": 9.4398
+  },
+  {
+    "code": "CG",
+    "name": "Republic of the Congo",
+    "longitude": 15.9005,
+    "latitude": 0.1423
+  },
+  {
+    "code": "RW",
+    "name": "Rwanda",
+    "longitude": 30.1039,
+    "latitude": -1.8972
+  },
+  {
+    "code": "SN",
+    "name": "Senegal",
+    "longitude": -14.7786,
+    "latitude": 15.1381
+  },
+  {
+    "code": "SC",
+    "name": "Seychelles",
+    "longitude": 55.4802,
+    "latitude": -4.6767
+  },
+  {
+    "code": "SL",
+    "name": "Sierra Leone",
+    "longitude": -11.7637,
+    "latitude": 8.6174
+  },
+  {
+    "code": "SO",
+    "name": "Somalia",
+    "longitude": 45.1924,
+    "latitude": 3.5689
+  },
+  {
+    "code": "ZA",
+    "name": "South Africa",
+    "longitude": 23.6657,
+    "latitude": -29.7088
+  },
+  {
+    "code": "SS",
+    "name": "South Sudan",
+    "longitude": 30.3902,
+    "latitude": 7.2305
+  },
+  {
+    "code": "SD",
+    "name": "Sudan",
+    "longitude": 29.2607,
+    "latitude": 16.3307
+  },
+  {
+    "code": "ST",
+    "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe",
+    "longitude": 7.021,
+    "latitude": 0.9709
+  },
+  {
+    "code": "TZ",
+    "name": "Tanzania",
+    "longitude": 34.9592,
+    "latitude": -6.0519
+  },
+  {
+    "code": "GM",
+    "name": "The Gambia",
+    "longitude": -14.9983,
+    "latitude": 13.6417
+  },
+  {
+    "code": "TG",
+    "name": "Togo",
+    "longitude": 1.0581,
+    "latitude": 8.8072
+  },
+  {
+    "code": "TN",
+    "name": "Tunisia",
+    "longitude": 9.0079,
+    "latitude": 33.6873
+  },
+  {
+    "code": "UG",
+    "name": "Uganda",
+    "longitude": 32.9486,
+    "latitude": 1.9726
+  },
+  {
+    "code": "ZM",
+    "name": "Zambia",
+    "longitude": 26.3953,
+    "latitude": -14.6608
+  },
+  {
+    "code": "ZW",
+    "name": "Zimbabwe",
+    "longitude": 29.9254,
+    "latitude": -18.9116
+  }
+]

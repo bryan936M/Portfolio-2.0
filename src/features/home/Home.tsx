@@ -4,6 +4,7 @@ import { Arrow } from "@/components/ui/Arrow";
 import { HomeOpening } from "./HomeOpening";
 import { MobileHeroMarquee } from "./MobileHeroMarquee";
 import { RibbonJourney } from "./RibbonJourney";
+import { WorkLocations } from "./WorkLocations";
 import "@/styles/ribbon-journey.css";
 
 const cutoutPortrait = "https://cdn.sanity.io/images/i5u4ixfm/production/1321881be0c51d809b84fb2e240643bc320d38ee-2000x2500.jpg";
@@ -35,13 +36,14 @@ export function Home({ portfolio }: { portfolio: Portfolio }) {
       </a>
       <div className="ribbon-hero-bottom"><a href="#about-bryan">Scroll to discover <span aria-hidden="true">↓</span></a></div>
     </section>
-    <section className="ribbon-section ribbon-about" id="about-bryan" data-ribbon-stop tabIndex={-1}>
+    <section className={`ribbon-section ribbon-about${profile.workCountries.length ? " ribbon-about-with-globe" : ""}`} id="about-bryan" data-ribbon-stop tabIndex={-1}>
       <div className="ribbon-copy">
         <p className="eyebrow">About me</p>
         <h2>Engineering,<br /><em>with curiosity.</em></h2>
         <p>{profile.introduction}</p>
         <details className="ribbon-detail" data-disclosure-key="about"><summary>How I work <span aria-hidden="true">+</span></summary><div data-disclosure-panel><p>{profile.about}</p><SiteLink href="/about/" className="ribbon-link">More about me <Arrow diagonal /></SiteLink></div></details>
       </div>
+      <WorkLocations codes={profile.workCountries} />
     </section>
     <section className="ribbon-section ribbon-work" id="selected-work" data-ribbon-stop tabIndex={-1}>
       <div className="ribbon-work-heading"><p className="eyebrow">Selected work</p><h2>Ideas, <em>built.</em></h2><SiteLink href="/work/" className="ribbon-link">All projects <Arrow diagonal /></SiteLink></div>
