@@ -48,6 +48,8 @@ The Sanity webhook is named **Bryan portfolio — Vercel main**. The publishing 
 
 The hosted Sanity Studio remains at https://bryan-portfolio-i5u4ixfm.sanity.studio/.
 
+For the initial work-country release, `studio/publish-work-countries.mjs` defaults to inspection. Set `PORTFOLIO_COUNTRIES_ACTION=publish` and an absolute `PORTFOLIO_RECOVERY_DIRECTORY` for its authenticated CLI execution. It backs up the current profile pair privately, patches only the confirmed RW/BJ/ZM field using the current published revision, and clears a draft only when all its other content matches the published document and its countries match this release. Draft cleanup carries its own revision guard in the same transaction. Unrelated drafts and deliberately different draft countries remain intact. Publishing triggers the existing main-branch rebuild.
+
 To inspect delivery status using the locally authenticated Sanity CLI:
 
 ```sh
@@ -58,6 +60,14 @@ The publishing helper defaults to read-only status. Its configure mode accepts t
 
 ## Checks and references
 
+## Secure release recovery — 2026-11-21
+
+The security baseline is production Git revision `8f91f90a85bc91a94bb56ac723346851ad238637`, deployment `dpl_4HEBLumD4HxqeD45KQwH23quo35Y` ([deployment](https://bryan-murasira-portfolio-ftlu1jaqr-bryan936ms-projects.vercel.app/)). It includes the BM controller fix and patched dependencies, without the globe. The corresponding Studio was deployed to its existing authenticated address using Sanity 6.24.0. Keep this deployment available as the secure rollback target; the earlier production used vulnerable dependencies.
+
+For subsequent releases, run `npm ci` and `npm run check` using `.nvmrc`, review the protected preview, and merge the exact reviewed head into `main`. Wait for that merge revision’s Vercel deployment to become Ready and check the public aliases before deploying its matching Studio with `npm exec --workspace @bryan/studio -- sanity deploy --no-build --schema-required --yes`. The Studio build must come from the same checked revision. Preserve Standard Protection throughout.
+
+If the globe needs rollback, use Vercel Instant Rollback to the secure baseline, then revert the feature changes on `main` while retaining the security commit. Verify a fresh deployment of that reverted revision; otherwise a later Sanity webhook could restore the broken feature. Rebuild and deploy Studio from the secure revision if its schema also needs rollback. Restore only release-owned `workCountries` changes from the private pre-publication backup, after comparing current values and applying current revision guards; preserve unrelated content and drafts. A changed revision requires fresh inspection, never a forced overwrite. Verify the resulting webhook build and public profile export.
+
 Run the checks in the root README. Hosted verification must include the correct canonical URL, core routes, Markdown/JSON discovery files, authenticated access, and actual 3D texture rendering.
 
 - [Vercel build settings](https://vercel.com/docs/builds/configure-a-build)
@@ -66,3 +76,4 @@ Run the checks in the root README. Hosted verification must include the correct 
 - [Deployment protection](https://vercel.com/docs/deployment-protection)
 - [Deploy Hooks](https://vercel.com/docs/deploy-hooks)
 - [Sanity webhooks](https://www.sanity.io/docs/content-lake/webhooks)
+- [Vercel Instant Rollback](https://vercel.com/docs/instant-rollback)

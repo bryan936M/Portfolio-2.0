@@ -16,7 +16,7 @@
     "preview": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
     "prepare:globe": "node scripts/prepare-globe.mjs",
-    "test:globe": "node --experimental-strip-types --test tests/work-countries.test.mjs",
+    "test:globe": "node --experimental-strip-types --test tests/work-countries.test.mjs tests/work-countries-publication.test.mjs",
     "test:contact": "node --experimental-strip-types --test tests/contact.test.mjs",
     "verify": "node scripts/verify-build.mjs",
     "studio": "npm run dev --workspace @bryan/studio",
