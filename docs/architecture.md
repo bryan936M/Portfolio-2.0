@@ -58,6 +58,8 @@ The checked-in content supplies the initial portfolio before seeding. After CMS 
 
 `npm run build` assigns a unique, public Sanity request tag to each build. Routes within a build share the query/cache key, while a later build cannot reuse an older published response from Next's restored fetch cache. Always use the package build command for deployment.
 
+The package build enforces the supported Node 22 security patch floor and runs the generated-output verifier after a successful Next.js build. CI runs clean-install application and Studio checks plus the complete workspace audit policy on pull requests/main. Exact moderate CLI-only exceptions are version/path/parent-bound and expire; high/critical findings cannot be waived. This adds release checks without changing the static hosting or CMS publishing boundaries.
+
 ## Publishing contract
 
 The current deployment model is build-time publication:

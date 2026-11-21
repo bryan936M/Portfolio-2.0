@@ -19,19 +19,23 @@
     "verify": "node scripts/verify-build.mjs",
     "studio": "npm run dev --workspace @bryan/studio",
     "studio:build": "npm run build --workspace @bryan/studio",
-    "install:ci": "npm install --no-audit --no-fund"
+    "install:ci": "npm install --no-audit --no-fund",
+    "test:opening": "node --experimental-strip-types --test tests/home-opening.test.mjs",
+    "test:security": "node --test tests/security-policy.test.mjs",
+    "security:check": "node scripts/check-security.mjs",
+    "check": "npm run typecheck && npm run test:contact && npm run test:opening && npm run test:security && npm run security:check && npm run build && npm run studio:build && tsc --noEmit -p studio/tsconfig.json"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.0",
     "@fontsource-variable/newsreader": "^5.2.0",
     "@formspree/react": "3.0.0",
-    "@next/env": "16.4.3",
+    "@next/env": "16.4.6",
     "@portabletext/react": "^4.0.0",
     "@react-three/fiber": "9.8.2",
     "@sanity/client": "8.11.0",
     "gsap": "3.15.0",
     "motion": "14.6.0",
-    "next": "16.4.3",
+    "next": "16.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "sharp": "0.35.5",
@@ -43,5 +47,15 @@
     "@types/react-dom": "^19.0.0",
     "@types/three": "^0.183.0",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "@vercel/frameworks": {
+      "js-yaml": "3.15.2",
+      "smol-toml": "1.9.1"
+    },
+    "@module-federation/dts-plugin": {
+      "undici": "7.30.1"
+    },
+    "vite@5.4.21": "6.4.6"
   }
 }

@@ -4,10 +4,10 @@ A portfolio for Bryan's full-stack and generative AI engineering work, with a se
 
 ## Run
 
-Use Node.js 22.13 or newer.
+Use Node.js 22.23.5, pinned in `.nvmrc`, or a newer Node 22 security patch. Vercel remains on managed Node 22.x.
 
 ```sh
-npm install
+npm ci --no-audit --no-fund
 npm run dev -- --port 3010
 ```
 
@@ -75,8 +75,13 @@ WebGL image textures are generated as same-origin PNGs from the published covers
 
 ## Checks
 
+`npm run check` runs the application/Studio checks and the workspace security gate from the lockfile. CI performs a clean install first. The gate blocks high/critical and unreviewed findings; exact, time-limited moderate tooling exceptions are documented in [Security](docs/security.md). A production build automatically runs the output verifier after Next.js succeeds, including CMS-triggered Vercel builds.
+
 ```sh
 npm run typecheck
+npm run test:opening
+npm run test:security
+npm run security:check
 npm run test:contact
 node --experimental-strip-types --test tests/home-opening.test.mjs
 npm run build

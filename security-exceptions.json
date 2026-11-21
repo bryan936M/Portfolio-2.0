@@ -1,0 +1,19 @@
+{
+  "exceptions": [
+    {
+      "advisory": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+      "package": "minimatch",
+      "version": "10.2.6",
+      "paths": [
+        "node_modules/minimatch"
+      ],
+      "context": {
+        "node_modules/@oclif/core": "4.14.0",
+        "node_modules/@sanity/cli": "8.33.0"
+      },
+      "expires": "2026-12-21",
+      "reason": "The CLI caller uses default optimizationLevel 1; the advisory requires optimizationLevel >= 2 and attacker-controlled glob patterns.",
+      "evidence": "@oclif/core/lib/config/plugin-loader.js calls minimatch(p,w) without options for trusted CLI plugin configuration; minimatch defaults optimizationLevel to 1. See docs/security.md."
+    }
+  ]
+}
